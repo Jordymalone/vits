@@ -1,3 +1,6 @@
+########################
+# 你原本的規則
+########################
 DUMMY1
 DUMMY2
 DUMMY3
@@ -16,3 +19,73 @@ monotonic_align/monotonic_align
 gen_audio_no/
 gen_text/
 *.json
+
+
+########################
+# Python / 編輯器通用
+########################
+*.py[cod]
+*.pyo
+*.pyd
+*.so
+
+.env
+.venv
+venv/
+env/
+
+.DS_Store
+.vscode/
+.idea/
+
+
+########################
+# 語音 / 資料集 / 產出
+########################
+# 原始或處理後資料集（若你想把 dataset 放上 repo，可移除這一行）
+dataset/
+wang_newest/
+wang_synthesis/
+wavs/
+filelists/
+
+# 合成或測試產生的 audio
+gen_audio/
+# 若未來有其它實驗產出的 audio 資料夾，也可以比照新增
+# gen_audio_*/
+
+# 大型壓縮檔、模型包
+*.tar
+*.tar.gz
+*.zip
+*.7z
+
+########################
+# 模型 checkpoint / 中間結果
+########################
+*.pt
+*.pth
+*.ckpt
+*.npz
+*.npy
+
+
+########################
+# 工具 repo / 第三方專案
+# （你不打算把它們當 submodule 管理，只想忽略）
+########################
+tools/resemble-enhance/
+tools/asr
+tools/augumentation
+tools/style_gen/wespeaker-voxceleb-resnet34-LM/
+
+
+########################
+# 其他建議忽略的暫存/備份
+########################
+backup/
+attn_debug/
+
+# 若未來有 tensorboard / wandb 等
+runs/
+wandb/

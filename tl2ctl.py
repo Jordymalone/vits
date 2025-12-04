@@ -45,6 +45,8 @@ if __name__=='__main__':
     
     data = "gua1 i1 king1 siunn3 bo5 khah1 ho2 e7 ke2 tshik8 ah4"
     data = "bu7 kik8 thian7 lun7 tshan7 enn1"
+    data = "gua1 i1 king1 siunn3 bo5 khah1 ho2 e7 ke2 tshik8 ah4"
+    data = "bue1 pan7 ko7 thih1"
     parser = argparse.ArgumentParser()
     parser.add_argument('--text', default=data, help='Text will be converted to CTL.')
     args = parser.parse_args()

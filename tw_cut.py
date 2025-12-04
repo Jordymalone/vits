@@ -13,7 +13,7 @@ class tw_frontend():
 
     def _get_initials_finals(self, sentence: str) -> Tuple[List[List[str]], bool]:
         initials = []
-        finals = [] 
+        finals = []
 
         sentence = sentence.replace("0", "")
 
@@ -27,7 +27,7 @@ class tw_frontend():
                 finals.append(v)
             else:
                 finals.append(v)
-    
+
         return initials, finals, True
 
     def _g2p(self, sentences: List[str]) -> Tuple[List[List[str]], bool]:
@@ -43,9 +43,9 @@ class tw_frontend():
                 phones_list.append('sp')
             if v and v not in self.punc:
                 phones_list.append(v)
-        
+
         return phones_list, True
-    
+
     def _cut_vowel(self, sentence):
         vowel_list = ['a', 'e', 'i', 'o', 'u']
         initials = []
@@ -56,7 +56,7 @@ class tw_frontend():
             if word in self.punc:
                 initials.append(word)
                 finals.append('')
-                
+
             for i, char in enumerate(word):
                 if char in vowel_list:
                     initials.append(word[: i].strip())
@@ -86,12 +86,12 @@ class tw_frontend():
             else:
                 r = f'{r} {p}'
         r = r.strip()
-        
+
         return r, True
-    
+
 if __name__ == "__main__":
     tw = tw_frontend()
-    raw = ch2tl.askForService("tshuì-am")
+    raw = ch2tl.askForService("今天吃早餐")
     print(raw)
     sandhi = tlsandhi.askForService(raw["tailuo"])
     print(sandhi)
@@ -101,11 +101,11 @@ if __name__ == "__main__":
     print(pinyin)
     from infer import synthesis
 
-    synthesis(pinyin[0], 183, 183, 'test.wav', None, 2)
+    # synthesis(pinyin[0], 183, 183, 'test.wav', None, 2)
     # with open(f'CTL.txt','r', encoding='utf-8') as f:
     #     lines = f.readlines()
 
-    
+
     # file_name = 0
     # for each in lines:
     #     file, pinyin = each.split()
@@ -117,4 +117,3 @@ if __name__ == "__main__":
     #     with open(f'output.txt','a',encoding='utf8') as f2:
     #         f2.write(f'{file_name:004}_{file}.wav\n')
     #     file_name+=1
-        

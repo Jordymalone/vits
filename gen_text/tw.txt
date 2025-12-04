@@ -1,2 +1,12 @@
-tw_01.wav|g0 ua01 ts0 u03 th0 au05 t0 ioh08 b0 o07 sc0 ioong07 sc0 in03 i07 e07 ue07
-tw_02.wav|m0 anni02 t0 i03 au03 p0 iah04 k0 oong01 dl0 ang05 e07 ph0 ainn01 ue07
+tsè-tsō.wav|ts0 e02 ts0 o03
+tsò-hué.wav|ts0 o02 h0 ue02
+khò-sè.wav|kh0 o02 s0 e03
+sǹg-puânn.wav|s0 ng02 p0 uann05
+hì-pan.wav|h0 i02 p0 an01
+sì-huè.wav|sc0 i02 h0 ue03
+sè-hàn.wav|s0 e02 h0 an03
+ì-kiàn.wav|i0 i02 k0 ieen03
+phò-hāi.wav|ph0 o02 h0 ai07
+sǹg-siàu.wav|s0 ng02 sc0 iau03
+hì-īnn.wav|h0 i02 i0 inn07
+sì-hong.wav|sc0 i02 h0 oong01

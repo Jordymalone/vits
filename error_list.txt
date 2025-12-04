@@ -1,0 +1,60 @@
+Line 325: 325.wav|k2 oon25 tsrh2 oong23 iu21 m2 a22 k2 e23 ooi23 ts2 u23 i23 k2 e23 m2 oo25
+Error: Symbol not found! Original phoneme string: "k2 oon25 tsrh2 oong23 iu21 m2 a22 k2 e23 ooi23 ts2 u23 i23 k2 e23 m2 oo25", problematic segment: "tsrh2" not found in symbol_to_id map.
+
+Line 327: 327.wav|ts2 oo23 th2 ai23 tsh2 oong25 k2 iang23 k2 iam22 tsh2 a25 tsch2 ien25 ooi23 k2 oon25 tsrh2 oong23 m2 oo25
+Error: Symbol not found! Original phoneme string: "ts2 oo23 th2 ai23 tsh2 oong25 k2 iang23 k2 iam22 tsh2 a25 tsch2 ien25 ooi23 k2 oon25 tsrh2 oong23 m2 oo25", problematic segment: "tsrh2" not found in symbol_to_id map.
+
+Line 328: 328.wav|k2 oon25 tsrh2 oong23 h2 e23 m25 h2 e23 tsch2 in23 m25 s2 ung21 s2 oong22
+Error: Symbol not found! Original phoneme string: "k2 oon25 tsrh2 oong23 h2 e23 m25 h2 e23 tsch2 in23 m25 s2 ung21 s2 oong22", problematic segment: "tsrh2" not found in symbol_to_id map.
+
+Line 329: 329.wav|ts2 oo23 th2 ai23 tsh2 oong25 k2 iang23 k2 iam22 tsh2 a25 tsch2 ien25 ts2 oo23 m2 a22 k2 e23 ooi23 sc2 ien21 k2 oon25 tsrh2 oong23
+Error: Symbol not found! Original phoneme string: "ts2 oo23 th2 ai23 tsh2 oong25 k2 iang23 k2 iam22 tsh2 a25 tsch2 ien25 ts2 oo23 m2 a22 k2 e23 ooi23 sc2 ien21 k2 oon25 tsrh2 oong23", problematic segment: "tsrh2" not found in symbol_to_id map.
+
+Line 415: 415.wav|n2 a23 h2 e23 an22 gn2 ioong25 s2 irn24 tsch2 iu23 h2 e23 tsch2 in23 tsh2 ung23 ieu23
+Error: Symbol not found! Original phoneme string: "n2 a23 h2 e23 an22 gn2 ioong25 s2 irn24 tsch2 iu23 h2 e23 tsch2 in23 tsh2 ung23 ieu23", problematic segment: "irn24" not found in symbol_to_id map.
+
+Line 325: 325.wav|k2 oon25 tsrh2 oong23 iu21 m2 a22 k2 e23 ooi23 ts2 u23 i23 k2 e23 m2 oo25
+Error: Symbol not found! Original phoneme string: "k2 oon25 tsrh2 oong23 iu21 m2 a22 k2 e23 ooi23 ts2 u23 i23 k2 e23 m2 oo25", problematic segment: "tsrh2" not found in symbol_to_id map.
+
+Line 327: 327.wav|ts2 oo23 th2 ai23 tsh2 oong25 k2 iang23 k2 iam22 tsh2 a25 tsch2 ien25 ooi23 k2 oon25 tsrh2 oong23 m2 oo25
+Error: Symbol not found! Original phoneme string: "ts2 oo23 th2 ai23 tsh2 oong25 k2 iang23 k2 iam22 tsh2 a25 tsch2 ien25 ooi23 k2 oon25 tsrh2 oong23 m2 oo25", problematic segment: "tsrh2" not found in symbol_to_id map.
+
+Line 328: 328.wav|k2 oon25 tsrh2 oong23 h2 e23 m25 h2 e23 tsch2 in23 m25 s2 ung21 s2 oong22
+Error: Symbol not found! Original phoneme string: "k2 oon25 tsrh2 oong23 h2 e23 m25 h2 e23 tsch2 in23 m25 s2 ung21 s2 oong22", problematic segment: "tsrh2" not found in symbol_to_id map.
+
+Line 329: 329.wav|ts2 oo23 th2 ai23 tsh2 oong25 k2 iang23 k2 iam22 tsh2 a25 tsch2 ien25 ts2 oo23 m2 a22 k2 e23 ooi23 sc2 ien21 k2 oon25 tsrh2 oong23
+Error: Symbol not found! Original phoneme string: "ts2 oo23 th2 ai23 tsh2 oong25 k2 iang23 k2 iam22 tsh2 a25 tsch2 ien25 ts2 oo23 m2 a22 k2 e23 ooi23 sc2 ien21 k2 oon25 tsrh2 oong23", problematic segment: "tsrh2" not found in symbol_to_id map.
+
+Line 415: 415.wav|n2 a23 h2 e23 an22 gn2 ioong25 s2 irn24 tsch2 iu23 h2 e23 tsch2 in23 tsh2 ung23 ieu23
+Error: Symbol not found! Original phoneme string: "n2 a23 h2 e23 an22 gn2 ioong25 s2 irn24 tsch2 iu23 h2 e23 tsch2 in23 tsh2 ung23 ieu23", problematic segment: "irn24" not found in symbol_to_id map.
+
+Line 325: 325.wav|k2 oon25 tsrh2 oong23 iu21 m2 a22 k2 e23 ooi23 ts2 u23 i23 k2 e23 m2 oo25
+Error: Symbol not found! Original phoneme string: "k2 oon25 tsrh2 oong23 iu21 m2 a22 k2 e23 ooi23 ts2 u23 i23 k2 e23 m2 oo25", problematic segment: "tsrh2" not found in symbol_to_id map.
+
+Line 327: 327.wav|ts2 oo23 th2 ai23 tsh2 oong25 k2 iang23 k2 iam22 tsh2 a25 tsch2 ien25 ooi23 k2 oon25 tsrh2 oong23 m2 oo25
+Error: Symbol not found! Original phoneme string: "ts2 oo23 th2 ai23 tsh2 oong25 k2 iang23 k2 iam22 tsh2 a25 tsch2 ien25 ooi23 k2 oon25 tsrh2 oong23 m2 oo25", problematic segment: "tsrh2" not found in symbol_to_id map.
+
+Line 328: 328.wav|k2 oon25 tsrh2 oong23 h2 e23 m25 h2 e23 tsch2 in23 m25 s2 ung21 s2 oong22
+Error: Symbol not found! Original phoneme string: "k2 oon25 tsrh2 oong23 h2 e23 m25 h2 e23 tsch2 in23 m25 s2 ung21 s2 oong22", problematic segment: "tsrh2" not found in symbol_to_id map.
+
+Line 329: 329.wav|ts2 oo23 th2 ai23 tsh2 oong25 k2 iang23 k2 iam22 tsh2 a25 tsch2 ien25 ts2 oo23 m2 a22 k2 e23 ooi23 sc2 ien21 k2 oon25 tsrh2 oong23
+Error: Symbol not found! Original phoneme string: "ts2 oo23 th2 ai23 tsh2 oong25 k2 iang23 k2 iam22 tsh2 a25 tsch2 ien25 ts2 oo23 m2 a22 k2 e23 ooi23 sc2 ien21 k2 oon25 tsrh2 oong23", problematic segment: "tsrh2" not found in symbol_to_id map.
+
+Line 415: 415.wav|n2 a23 h2 e23 an22 gn2 ioong25 s2 irn24 tsch2 iu23 h2 e23 tsch2 in23 tsh2 ung23 ieu23
+Error: Symbol not found! Original phoneme string: "n2 a23 h2 e23 an22 gn2 ioong25 s2 irn24 tsch2 iu23 h2 e23 tsch2 in23 tsh2 ung23 ieu23", problematic segment: "irn24" not found in symbol_to_id map.
+
+Line 325: 325.wav|k2 oon25 tsrh2 oong23 iu21 m2 a22 k2 e23 ooi23 ts2 u23 i23 k2 e23 m2 oo25
+Error: Symbol not found! Original phoneme string: "k2 oon25 tsrh2 oong23 iu21 m2 a22 k2 e23 ooi23 ts2 u23 i23 k2 e23 m2 oo25", problematic segment: "tsrh2" not found in symbol_to_id map.
+
+Line 327: 327.wav|ts2 oo23 th2 ai23 tsh2 oong25 k2 iang23 k2 iam22 tsh2 a25 tsch2 ien25 ooi23 k2 oon25 tsrh2 oong23 m2 oo25
+Error: Symbol not found! Original phoneme string: "ts2 oo23 th2 ai23 tsh2 oong25 k2 iang23 k2 iam22 tsh2 a25 tsch2 ien25 ooi23 k2 oon25 tsrh2 oong23 m2 oo25", problematic segment: "tsrh2" not found in symbol_to_id map.
+
+Line 328: 328.wav|k2 oon25 tsrh2 oong23 h2 e23 m25 h2 e23 tsch2 in23 m25 s2 ung21 s2 oong22
+Error: Symbol not found! Original phoneme string: "k2 oon25 tsrh2 oong23 h2 e23 m25 h2 e23 tsch2 in23 m25 s2 ung21 s2 oong22", problematic segment: "tsrh2" not found in symbol_to_id map.
+
+Line 329: 329.wav|ts2 oo23 th2 ai23 tsh2 oong25 k2 iang23 k2 iam22 tsh2 a25 tsch2 ien25 ts2 oo23 m2 a22 k2 e23 ooi23 sc2 ien21 k2 oon25 tsrh2 oong23
+Error: Symbol not found! Original phoneme string: "ts2 oo23 th2 ai23 tsh2 oong25 k2 iang23 k2 iam22 tsh2 a25 tsch2 ien25 ts2 oo23 m2 a22 k2 e23 ooi23 sc2 ien21 k2 oon25 tsrh2 oong23", problematic segment: "tsrh2" not found in symbol_to_id map.
+
+Line 415: 415.wav|n2 a23 h2 e23 an22 gn2 ioong25 s2 irn24 tsch2 iu23 h2 e23 tsch2 in23 tsh2 ung23 ieu23
+Error: Symbol not found! Original phoneme string: "n2 a23 h2 e23 an22 gn2 ioong25 s2 irn24 tsch2 iu23 h2 e23 tsch2 in23 tsh2 ung23 ieu23", problematic segment: "irn24" not found in symbol_to_id map.
+

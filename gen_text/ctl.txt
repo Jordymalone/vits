@@ -1,2 +1,3 @@
 ctl_01.wav|uoo43 tsc4 ioou44 t4 u42 k4 uoo42 l4 i44 tsrh4 ong42 k4 oong41 t4 a44 scy4 e42
 ctl_02.wav|tsrh4 on42 sc4 ieen41 sr4 ong41 tsrh4 ong42 l4 i44 tsh4 ir44 t4 ong43 tsr4 oong41 scy4 e42
+ctl_03.wav|n4 i43 h4 au43 a41 ph4 oong42 ioou43 sil uoo43 l4 ai42 ts4 ir44 th4 ai42 uan41 sil h4 on43 k4 au41 sc4 ing44 jr4 on44 sr4 ir44 n4 i43 oo41

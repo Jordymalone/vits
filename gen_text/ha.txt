@@ -1,2 +1,483 @@
-ha_01.wav|h2 am25 t2 oo23 n2 at24 s2 at28 sil k2 i25 v2 ooi21 f2 an21 s2 u25 sil k2 iook24 t2 ai22 p2 un21 f2 oo22 s2 ir22 n2 at24 t2 oo22 sil m2 oo25 s2 oong21 t2 oo22 gn2 in25 sil
-ha_02.wav|iu21 it24 gn2 it24 sil k2 i25 s2 un25 th2 eu25 m25 t2 i21 th2 an21 t2 en22 it24 h2 oong23 m2 a22 k2 e23 t2 ung21 sc2 i21 sil ia22 t2 ung21 sc2 i21 v2 ooi23 h2 au21 k2 oong21 t2 oong21 tsc2 iang21 sil
+1.wav|an22 ts2 oo22 tsch2 i21
+2.wav|ng22 oon21
+3.wav|v2 an22 oon21
+4.wav|s2 irt28 p2 au22 m2 ang25
+5.wav|tsh2 oo21 am23 p2 u21 h2 oo22 s2 ooi23 m2 oo25
+6.wav|n25 k2 im21 p2 u21 gn2 it24 k2 am22 k2 ook24 gn2 ioong22 p2 an21
+7.wav|n25 k2 im21 p2 u21 gn2 it24 h2 i23 s2 et24 t2 oong21 h2 oo22
+8.wav|n25 k2 im21 p2 u21 gn2 it24 tsch2 in23 iu21 tsc2 in21 s2 irn25
+9.wav|n25 k2 im21 p2 u21 gn2 it24 kh2 oon23 h2 i22 l2 ooi25 t2 oong21 kh2 iooi23 k2 e23 ioong23 e22
+10.wav|n25 iu21 m2 a22 k2 e23 sc2 im21 s2 ir23 h2 e23 m2 oo25
+11.wav|h2 e23 gn2 ioong22 p2 an21 h2 in25
+12.wav|tsh2 oo21 am23 p2 u21 m2 oo25 s2 ooi23 h2 oo22
+13.wav|n25 ia22 h2 a23 ooi23 h2 iet24 kh2 un23 it24 h2 a23 m2 oo25
+14.wav|n25 ph2 in25 s2 oong25 t2 u23 s2 ooi23 m25 h2 oo22 h2 e23 m2 oo25
+15.wav|ph2 in25 s2 oong25 k2 e23 k2 ung21 ts2 ook24 ap24 l2 it28 tsch2 in23 th2 ai23
+16.wav|ng2 ai25 tsh2 oong25 th2 eu23 am23 p2 u21 ia23 s2 ooi23 m25 h2 oo22
+17.wav|f2 an22 tsh2 au23 s2 ooi23 m25 th2 et24 tsch2 in23 k2 an21 kh2 u22
+18.wav|tsch2 in23 f2 oon21 h2 i22 n25 ia22 h2 a23 ts2 oo23 t2 et24 s2 ooi23 t2 et24 h2 oo22
+19.wav|h2 e23 m25 h2 e23 iu21 m2 a22 k2 e23 m2 un23 th2 i25
+20.wav|m2 oo25 m2 a22 k2 e23 ts2 ui23 kh2 iun21 h2 a23 m2 oo25 h2 an25
+21.wav|ooi23 h2 iet24 kh2 un23 it24 h2 a23 m2 oo25
+22.wav|kh2 oon23 m2 un25 ts2 irn21 ts2 oo23 t2 et24 iung23 th2 ien23 f2 a23 ia23 h2 e23 m2 ioong22 l2 u23 sc2 ien21 k2 ua23 h2 oo23
+23.wav|tsch2 iang22 t2 i23 h2 eu23 ts2 irn21 kh2 i21 tsch2 iam23 tsh2 oo21 it24 h2 a23
+24.wav|t2 i23 t2 en21 h2 oo23 p2 an22 ts2 oo23 t2 et24 kh2 oon23 t2 oo22 n25 k2 ua23 h2 oo23 k2 e23 h2 oo23 m2 a21
+25.wav|tsch2 iang22 tsc2 ioong21 kh2 ien23 p2 oo22 kh2 a25 p2 un21 ng2 ai25
+26.wav|ng2 ai25 sc2 ien21 th2 ung25 n25 oon21 ph2 ai25 gn2 iam23 h2 iet24 l2 au21 gn2 iam23 gn2 iau23
+27.wav|ng2 ai25 ooi23 th2 ung25 n25 oon21 ph2 ai25 ts2 oo23 v2 i23 k2 iang23 k2 iam22 tsh2 a25
+28.wav|n2 a21 ph2 i21 k2 a23 t2 an21 t2 oo23 tsh2 ut24 n2 ap28 kh2 ui23 th2 ooi25 k2 ieu22 f2 i23
+29.wav|v2 i23 s2 oo22 h2 e23 tsch2 im25 m25 t2 oo22 ts2 oo23 t2 et24 h2 i23 ts2 ir23 k2 ung21 f2 uk28 v2 u23 th2 ooi25 m2 un23 it24 h2 a23
+30.wav|tsch2 iang22 n2 a21 gn2 ia21 k2 e23 tsh2 u22 f2 oong21 t2 oo23 iook28 f2 oong25 l2 iang21 iook28 e22
+31.wav|tsch2 iang22 ts2 eu23 h2 oo23 m2 a21 l2 ooi25 l2 iang21 iook28 e22
+32.wav|tsch2 iang22 ts2 eu23 iook28 th2 ooi23 t2 ang22 k2 e23 ts2 ir22 s2 ir23 f2 uk28 iook28
+33.wav|h2 e23 iu21 iook28 e22 f2 oong21 m2 ien23 k2 e23 m2 un23 th2 i25 ts2 oo23 t2 et24 h2 i23 m2 un23 iook28 s2 ir21
+34.wav|iu21 k2 uan21 kh2 ien23 kh2 oong21 m2 un23 th2 i25 ts2 oo23 t2 et24 h2 i23 v2 i23 k2 au23 s2 irt24 m2 un23 v2 i23 k2 au23 s2 ir21
+35.wav|n25 ts2 oo23 t2 et24 h2 i23 i21 ien23 h2 ien23 tsh2 oong25 k2 ua23 h2 oo23
+36.wav|tsh2 irt28 tsc2 iap24 t2 oo23 k2 ua23 h2 oo23 tsh2 u23 k2 ua23 h2 oo23 tsch2 iu23 ts2 oo23 t2 et24
+37.wav|tsch2 iang22 m2 un23 ooi23 t2 oo23 n2 ai23 v2 i23 k2 ieu22 f2 i23
+38.wav|n25 t2 oo23 k2 e23 ph2 ien22 kh2 ui23 th2 ooi25 k2 ieu22 f2 i23 tsch2 iu23 ts2 oo23 t2 et24
+39.wav|k2 ieu22 v2 an25 f2 i23 ooi23 t2 oo23 n2 ai23 v2 i23 n2 a21 iook28 e22
+40.wav|n25 t2 oo23 k2 e23 ph2 ien22 iook28 f2 oong25 n2 a21 iook28 e22
+41.wav|iook28 f2 oong25 ooi23 gn2 ioong22 p2 an21 h2 ang25
+42.wav|n25 tsh2 irt28 tsh2 irt28 h2 ang25 t2 en22 h2 i23 t2 i23 ts2 oo22 s2 u22 ph2 ien22
+43.wav|n25 iu21 n2 ai23 v2 i23 m25 s2 ung21 s2 oong22
+44.wav|ia22 l2 ioong22 s2 am21 gn2 it24 l2 ooi25 tsh2 oong25 th2 eu23 v2 ooi23 k2 am22 k2 ook24 t2 oo22 v2 i23 th2 ung23 h2 an25 k2 oo23 oo21 l2 i23 t2 u22
+45.wav|m2 a22 k2 e23 s2 ir25 tsc2 iet24 v2 ooi23 k2 am22 k2 ook24 t2 oo22 v2 i23 th2 ung23 l2 au21 oo21 l2 i23 t2 u22
+46.wav|iau21 k2 e23 s2 ir25 tsc2 iet24 v2 ooi23 k2 am22 k2 ook24 t2 oo22 th2 ung23
+47.wav|oo21 l2 i23 t2 u22 iu21 s2 ir25 v2 ooi23 oo21 sc2 ia23 p2 a21 iu21 s2 ir25 v2 ooi23 oo21 s2 ui22 sc2 ia23
+48.wav|n25 ts2 ui23 kh2 iun21 iu21 s2 irt28 n2 ai23 t2 eu21 t2 ung21 sc2 i21
+49.wav|tsch2 ien25 l2 ioong22 gn2 it24 iu21 h2 i23 tsh2 oon21 th2 ang21 s2 irt28 h2 ooi22 s2 an22
+50.wav|ts2 eu23 gn2 ia21 k2 e23 ts2 irn23 th2 eu25 kh2 oon23 l2 ooi25 h2 e23 k2 ip24 sc2 in23 v2 i23 tsh2 oong25 iam25
+51.wav|k2 e23 ooi23 gn2 ioong22 p2 an21 l2 ooi25 tsh2 ir23 l2 iau25
+52.wav|ng2 ai25 kh2 ooi21 ts2 ak24 tsh2 u22 f2 oong21 p2 un21 n25 sc2 ien21 h2 i23 n2 a21 iook28 e22 s2 irt28
+53.wav|ooi23 k2 i23 t2 et24 m25 h2 oo22 s2 irt28 tsch2 iuk24 k2 it24 sc2 in23 k2 e23 s2 irt28 v2 ut28
+54.wav|n2 a23 h2 e23 m2 oo25 h2 a23 h2 oo22 k2 i23 t2 et24 ts2 ai23 k2 oo23 ts2 oon22 l2 ooi25 kh2 oon23
+55.wav|tsch2 iang22 m2 un23 i21 ien23 iu21 n2 ai23 k2 i23 kh2 oo21 m2 un25 ts2 irn21
+56.wav|tsh2 a21 f2 oo23 ooi23 kh2 oon23 n2 ai23 kh2 oo21
+57.wav|tsch2 iang22 m2 un23 k2 uan21 tsc2 iet24 iam25 ooi23 k2 ua23 n2 ai23 kh2 oo21
+58.wav|h2 e23 n2 ai23 ts2 ung22 k2 e23 k2 uan21 tsc2 iet24 iam25
+59.wav|m2 uk24 tsch2 ien25 iu21 m2 a22 k2 e23 ts2 irn23 th2 eu25 tsh2 ut24 h2 ien23
+60.wav|h2 e23 f2 ung21 s2 irp24 sc2 in23 k2 uan21 tsc2 iet24 iam25
+61.wav|ts2 ui23 kh2 iun21 f2 ung21 s2 irp24 th2 ung23 kh2 ooi21 s2 ir22 f2 at24 ts2 ook24
+62.wav|oo21 gn2 iau23 k2 e23 s2 ir25 tsc2 iet24 v2 ooi23 th2 ung23 gn2 iau23 iu21 h2 iet24
+63.wav|n25 ts2 oo23 t2 et24 k2 ua23 m2 ien21 it28 f2 ung21 s2 irp24 m2 un25 ts2 irn21
+64.wav|k2 ien23 gn2 i23 n25 k2 ua23 p2 i23 gn2 iau23 kh2 oo21 m2 un25 ts2 irn21
+65.wav|n25 n2 ai23 v2 i23 k2 am22 k2 ook24 m25 s2 ung21 s2 oong22
+66.wav|n2 ai23 v2 i23 k2 am22 k2 ook24 t2 oo22 iu21 m2 un23 th2 i25
+67.wav|h2 e23 gn2 ioong22 p2 an21 k2 e23 m25 s2 ung21 s2 oong22
+68.wav|m25 s2 ung21 s2 oong22 k2 e23 tsch2 in25 h2 in25 h2 e23 m2 a22 k2 e23 s2 ir25 tsc2 iet24 kh2 ooi21 s2 ir22
+69.wav|gn2 in25 k2 am22 k2 ook24 t2 oo22 m25 s2 ung21 s2 oong22 iu21 k2 i22 k2 iu22 l2 e22
+70.wav|m2 a22 k2 e23 tsch2 in25 h2 in25 ts2 ir21 h2 a21 v2 ooi23 k2 am22 k2 ook24 t2 oo22 h2 a23 m25 s2 ung21 s2 oong22
+71.wav|m2 a22 k2 e23 tsch2 in25 h2 in25 ts2 ir21 h2 a21 v2 ooi23 k2 am22 k2 ook24 t2 oo22 m2 oo25 an22 s2 ung21 s2 oong22
+72.wav|n25 n2 ai23 v2 i23 v2 ooi23 th2 ung23
+73.wav|h2 e23 gn2 ioong22 p2 an21 th2 ung23
+74.wav|m2 a22 k2 e23 s2 ir25 tsc2 iet24 kh2 ooi21 s2 ir22 th2 ung23
+75.wav|th2 ung23 k2 i22 k2 iu22
+76.wav|m2 a22 k2 e23 tsch2 in25 h2 in25 ts2 ir21 h2 a21 v2 ooi23 k2 am22 k2 ook24 t2 oo22 h2 a23 th2 ung23
+77.wav|m2 a22 k2 e23 tsch2 in25 h2 in25 ts2 ir21 h2 a21 v2 ooi23 k2 am22 k2 ook24 t2 oo22 m2 oo25 an22 th2 ung23
+78.wav|tsch2 iang22 m2 un23 n25 iu21 n2 ai23 v2 i23 k2 am22 k2 ook24 t2 oo22 h2 a23 m25 s2 ung21 s2 oong22
+79.wav|ng2 ai25 k2 am22 k2 ook24 ts2 oo22 k2 iook24 v2 ooi23 p2 i23 l2 au21 tsh2 ir23 th2 ung23
+80.wav|ia22 ts2 ung22 tsch2 in25 h2 in25 h2 e23 k2 i22 s2 ir25 kh2 ooi21 s2 ir22 k2 e23
+81.wav|th2 ai23 iook24 iu21 p2 an23 gn2 ien25 l2 e22
+82.wav|m2 a22 k2 e23 s2 ir25 tsc2 iet24 p2 un21 n25 k2 am22 k2 ook24 t2 oo22 h2 a23 gn2 iam25 tsh2 ung23
+83.wav|th2 it28 ph2 iet28 h2 e23 k2 iu22 tsh2 oo21 m2 oo25 tsch2 iu23 kh2 i21 k2 iu22 ts2 ir21 h2 eu23
+84.wav|k2 in21 k2 oo23 ts2 ook24 l2 iung25 l2 au21 gn2 iet28 f2 u21 h2 eu23 v2 ooi23 k2 am22 k2 ook24 t2 oo22 h2 a21 s2 ung21 s2 oong22
+85.wav|m25 s2 ung21 s2 oong22 k2 e23 s2 ir25 tsc2 iet24 s2 irt24 s2 ir22 iung23 m2 a22 k2 e23 iook28 e22 m2 oo25
+86.wav|iu21 s2 ang25 s2 ir25 v2 ooi23 s2 irt28 ph2 u21 n2 a21 th2 en25
+87.wav|ia22 ts2 ung22 iook28 e22 h2 e23 gn2 ioong22 p2 an21 l2 ooi25 k2 e23
+88.wav|h2 e23 t2 oo23 ng2 a21 v2 uk24 h2 a21 f2 u23 kh2 iun21 ts2 irn21 s2 oo22 k2 e23 i21 s2 en21 kh2 ooi21 k2 e23
+89.wav|gn2 ia21 k2 e23 iook28 e22 iu21 t2 ai23 l2 ooi25 m2 oo25
+90.wav|t2 i23 t2 ai23 ien23 kh2 i25 k2 ien21 tsch2 iu23 ooi23 f2 uk28 iung23 i21 ien23 i21 s2 en21 kh2 ooi21 k2 e23 iook28 e22
+91.wav|tsch2 iang22 m2 un23 n25 ia22 h2 a23 iu21 n2 ai23 v2 i23 k2 am22 k2 ook24 t2 oo22 m25 s2 ung21 s2 oong23
+92.wav|t2 u22 s2 ir22 k2 e23 v2 i23 v2 ooi23 th2 ung23
+93.wav|h2 e23 gn2 ioong22 p2 an21 th2 ung23
+94.wav|v2 ooi23 sc2 iu25 sc2 iu25 sc2 iu23 sc2 iu23
+95.wav|m2 a22 k2 e23 tsch2 in25 h2 in25 ts2 ir21 h2 a21 v2 ooi23 p2 un21 n25 k2 am22 k2 ook24 t2 oo22 h2 a23 th2 ung23
+96.wav|s2 irt28 p2 au22 f2 an23 h2 eu23 v2 ooi23 h2 an25 kh2 a23 th2 ung23
+97.wav|ts2 u23 s2 a23 h2 eu23 n25 k2 am22 k2 ook24 t2 oo22 gn2 ioong22 e22
+98.wav|m2 oo25 an22 th2 ung23 l2 e21
+99.wav|k2 e23 n25 ooi23 h2 oo22 h2 oo22 h2 iet24 kh2 un23
+100.wav|n25 th2 eu25 p2 ai22 iu21 tsh2 ook28 k2 oo23 m2 a22 k2 e23 ph2 iang23 m2 oo25
+101.wav|n25 th2 eu25 p2 ai22 s2 irt24 tsh2 u23 k2 oo23 ph2 iang23 ien23 m2 oo25
+102.wav|n25 th2 eu25 p2 ai22 h2 e23 m25 h2 e23 s2 irt24 kh2 ooi21 t2 oo21 k2 oo23
+103.wav|n25 th2 eu25 p2 ai22 h2 e23 m25 h2 e23 s2 irt24 tsh2 ook28 ph2 iang23 tsh2 u23 k2 oo23 ph2 iang23 ien23
+104.wav|n25 iu21 in21 v2 i23 kh2 i25 th2 a21 k2 e23 ph2 iang23 tsh2 u23 k2 oo23 ph2 iang23 ien23 m2 oo25
+105.wav|tsch2 iang22 m2 un23 n25 s2 irt24 tsh2 ook28 k2 oo23 m2 a22 k2 e23 m2 an23 sc2 in23 ph2 iang23 m2 oo25
+106.wav|m25 k2 oo23 ts2 ui23 kh2 iun21 h2 iet24 ap24 iu21 h2 a23 k2 oo21 t2 eu21
+107.wav|h2 iet24 ap24 h2 e23 k2 i22 t2 oo21
+108.wav|iu21 s2 ir25 k2 oo21 k2 e23 h2 e23 it24 p2 ak24 sc2 i23 s2 irp28 t2 ai21 k2 e23 h2 e23 k2 iu22 s2 irp28
+109.wav|h2 e23 ts2 irn23 s2 oong25 ia23 h2 e23 ts2 irn23 s2 oong25
+110.wav|h2 e23 p2 i22 ts2 irn23 s2 oong25 k2 e23 h2 a23 k2 oo21 it24 t2 eu21
+111.wav|t2 i23 tsh2 u23 ien23 kh2 i25 k2 ien21 v2 ooi23 th2 it28 ph2 iet28 ts2 u23 i23 n25 ia22 f2 oong21 m2 ien23 k2 e23 m2 un23 th2 i25
+112.wav|tsch2 iang22 m2 un23 n25 th2 eu25 p2 ai22 s2 irt24 tsh2 u23 ien23 k2 oo23 m2 oo25
+113.wav|it24 gn2 ien25 tsch2 ien25 in21 v2 i23 m2 oo21 tsh2 oong25 iam25 tsh2 u23 k2 oo23 ien23 kh2 ooi21 t2 oo21
+114.wav|h2 e23 m25 h2 e23 h2 an25 iu21 in21 v2 i23 kh2 i25 th2 a21 k2 e23 ph2 iang23 ts2 irn23 tsh2 u23 k2 oo23 ien23
+115.wav|ng2 ai25 s2 irt24 in21 v2 i23 tsh2 ung23 k2 am22 m2 oo23 f2 at24 k2 oo21 s2 eu21 gn2 ip28 ien23 tsh2 ir23 l2 iau25
+116.wav|ng2 ai25 sc2 ioong22 in23 k2 ooi21 tsch2 iu23 h2 e23 an22 gn2 ioong25 th2 in23 th2 in23
+117.wav|tsch2 iang22 m2 un23 n25 s2 irt24 tsh2 ook28 k2 oo23 k2 ut24 tsc2 iet24 iam25 m2 oo25
+118.wav|t2 i23 s2 am21 gn2 ien25 tsch2 ien25 iu21 tsh2 ook28 k2 oo23 th2 ung23 f2 ung21
+119.wav|iu21 tsh2 ir23 l2 iau25 k2 oo23 m2 oo25
+120.wav|iu21 kh2 oon23 k2 oo23 i21 s2 en21 s2 irt28 iook28 e22 h2 eu21 iu21 k2 ooi22 s2 an23
+121.wav|ia22 h2 a23 iu21 ts2 ai23 k2 oo23 f2 at24 ts2 ook24 m2 oo25
+122.wav|ts2 ui23 kh2 iun21 m2 oo25
+123.wav|k2 e23 n25 s2 irt28 t2 ung21 sc2 i21 ooi23 ts2 u23 i23 kh2 ung22 ts2 ir23 ts2 ang23 h2 oo22
+124.wav|ng2 ai25 v2 ooi23 ts2 u23 i23
+125.wav|gn2 ia21 k2 a21 tsh2 uk28 k2 e23 gn2 in25 s2 irt24 t2 et24 k2 oo23 n2 ai23 t2 eu21 ph2 iang23
+126.wav|n2 ai23 t2 eu21 ph2 iang23 h2 e23 v2 i25 tsh2 oon25 sc2 in23 k2 e23 ph2 iang23
+127.wav|s2 oong25 k2 ien23 k2 e23 v2 i25 tsh2 oon25 ph2 iang23 iu21 n2 ai23 t2 eu21
+128.wav|v2 i25 tsh2 oon25 k2 e23 ph2 iang23 iu21 p2 au21 h2 am25 ng2 am25 ts2 irn23 m2 oo25
+129.wav|k2 a21 tsh2 uk28 t2 u22 iu21 m2 a22 gn2 in25 tsh2 ook28 k2 oo23 v2 i25 tsh2 oon25 sc2 in23 k2 e23 ph2 iang23
+130.wav|k2 oo21 h2 iet24 ap24 ts2 ung23 f2 ung21 h2 e23 s2 oon23 v2 i25 tsh2 oon25 sc2 in23 k2 e23 ph2 iang23 m2 oo25
+131.wav|th2 oong25 gn2 iau23 ph2 iang23 h2 e23 v2 i25 tsh2 oon25 sc2 in23 k2 e23 ph2 iang23 m2 oo25
+132.wav|gn2 ia21 k2 e23 k2 a21 tsh2 uk28 t2 u22 iu21 gn2 in25 t2 et24 k2 oo23 th2 oong25 gn2 iau23 ph2 iang23 m2 oo25
+133.wav|gn2 ia21 k2 e23 k2 a21 tsh2 uk28 iu21 gn2 in25 t2 et24 k2 oo23 tsc2 in21 s2 irn25 ph2 iang23 m2 oo25
+134.wav|gn2 ia21 k2 e23 k2 a21 tsh2 uk28 iu21 gn2 in25 ts2 ung23 f2 ung21 m2 oo25
+135.wav|tsch2 iang22 m2 un23 gn2 ia21 k2 e23 k2 a21 tsh2 uk28 t2 u22 iu21 gn2 in25 t2 et24 k2 oo23 v2 i25 tsh2 oon25 sc2 in23 k2 e23 ph2 iang23 m2 oo25
+136.wav|ng2 ai25 m25 t2 i21
+137.wav|n2 ai23 t2 eu21 ph2 iang23 h2 e23 v2 i25 tsh2 oon25 sc2 in23 k2 e23 ph2 iang23
+138.wav|tsch2 ioong23 k2 oo21 h2 iet24 ap24 th2 oong25 gn2 iau23 ph2 iang23 th2 ung23 f2 ung21 ng2 am25 ts2 irn23 tsc2 in21 s2 irn25 ph2 iang23 ia22 t2 eu21 tsch2 iu23 h2 e23
+139.wav|ts2 ung23 f2 ung21 iu21 s2 oon23 m2 oo25
+140.wav|m2 e23 s2 oon23 h2 e23 gn2 ia21 k2 e23 k2 a21 tsh2 uk28 iu21 m2 a22 gn2 in25 s2 irt24 t2 et24 k2 oo23 ts2 ung23 f2 ung21
+141.wav|ng2 a21 k2 ung21 t2 i23 s2 am21 gn2 ien25 tsch2 ien25 s2 irt24 ts2 ung23 f2 ung21
+142.wav|h2 an25 iu21 kh2 i25 th2 a21 k2 e23 gn2 in25 s2 irt24 t2 et24 k2 oo23 v2 i25 tsh2 oon25 sc2 in23 k2 e23 ph2 iang23 m2 oo25
+143.wav|ng2 a21 a21 p2 ak24 l2 au21 a21 s2 uk24 th2 ang21 k2 oong22 iu21 k2 oo21 h2 iet24 ap24
+144.wav|ng2 ai25 s2 oo22 t2 i21 tsch2 iu23 an22 gn2 ioong25 th2 in23 th2 in23
+145.wav|gn2 ia21 k2 e23 k2 a21 tsh2 uk28 iu21 gn2 in25 t2 et24 k2 oo23 th2 oong25 gn2 iau23 ph2 iang23 m2 oo25
+146.wav|ng2 a21 k2 ung21 t2 et24 k2 oo23 th2 oong25 gn2 iau23 ph2 iang23
+147.wav|h2 an25 iu21 kh2 i25 th2 a21 k2 e23 gn2 in25 m2 oo25
+148.wav|ia22 l2 au21 ng2 a21 ph2 iang23 iu21 k2 uan21 h2 e23 h2 e23 m2 oo25
+149.wav|in21 v2 i23 th2 oong25 gn2 iau23 ph2 iang23 v2 ooi23 iang22 h2 ioong22 t2 oo22 ph2 iang23 k2 e23 tsh2 ir23 l2 iau25
+150.wav|k2 i25 h2 e23 v2 i25 tsh2 oon25 ph2 iang23 k2 e23 it24 ts2 ung22 en21 l2 i22 ooi23 sc2 ien21 l2 iau22 k2 ie22
+151.wav|ng2 a21 a21 i25 iu21 tsh2 ook28 k2 oo23 ng2 am25 ts2 irn23
+152.wav|tsch2 iang22 m2 un23 h2 e23 tsh2 ook28 t2 oo23 n2 ai23 ts2 ung22 ng2 am25 ts2 irn23
+153.wav|k2 i25 h2 e23 k2 oon21 ng2 am25
+154.wav|tsch2 iang22 m2 un23 ia22 l2 au21 ng2 a21 ph2 iang23 iu21 k2 uan21 h2 e23 h2 e23 m2 oo25
+155.wav|t2 i23 tsh2 ir23 l2 iau25 k2 e23 k2 oo23 tsh2 ang25 t2 oong21 ts2 ung21 en21 l2 i22 ooi23 sc2 ien21 l2 iau22 k2 ie22 gn2 ia21 k2 e23 k2 a21 tsh2 uk28 ph2 iang23 s2 ir22
+156.wav|an22 gn2 ioong25 ts2 ang23 ts2 oo23 t2 et24 th2 i25 k2 iung21 n25 h2 a23 s2 irt24 t2 oong21 k2 e23 tsh2 ir23 l2 iau25
+157.wav|n25 ia22 h2 a23 iu21 tsh2 oong25 kh2 i25 s2 irt28 m2 a22 k2 e23 iook28 e22 m2 oo25
+158.wav|n25 s2 oo22 s2 irt28 k2 e23 h2 e23 m2 a22 k2 e23 iook28 e22
+159.wav|n25 k2 i22 k2 iu22 s2 irt28 it24 t2 oo23 iook28 e22
+160.wav|n25 iu21 t2 ui23 m2 a22 k2 e23 iook28 e22 v2 ooi23 k2 oo23 m2 en22 m2 oo25
+161.wav|n25 s2 irt28 k2 e23 iook28 e22 h2 e23 gn2 ioong22 p2 an21 l2 ooi25 k2 e23
+162.wav|n25 t2 i21 iook28 e22 k2 e23 ts2 ook24 iung23 m2 oo25
+163.wav|n25 t2 i21 iook28 e22 k2 e23 f2 u23 ts2 ook24 iung23 m2 oo25
+164.wav|n25 l2 iau22 k2 ie22 iook28 e22 k2 e23 s2 irt28 k2 e23 f2 oong21 f2 ap24 m2 oo25
+165.wav|n25 k2 am22 t2 i21 s2 irt28 iook28 e22 h2 e23 tsh2 ut24 h2 ien23 f2 u23 ts2 ook24 iung23 k2 e23 s2 ir25 tsc2 iet24 ooi23 gn2 ioong22 p2 an21 m2 oo25
+166.wav|tsch2 iang22 m2 un23 n25 h2 e23 m25 h2 e23 iu21 tsh2 oong25 kh2 i25 s2 irt28 iook28 e22
+167.wav|oon21 m2 in25 iook28 iu21 s2 oon23 m2 oo25
+168.wav|m2 e23 s2 oon23 n25 ts2 oo23 m2 a22 k2 e23 ooi23 s2 irt28 oon21 m2 in25 iook28
+169.wav|in21 v2 i23 s2 ooi23 m25 t2 et24
+170.wav|k2 i22 k2 iu22 s2 irt28 it24 t2 oo23
+171.wav|it24 p2 an21 h2 e23 s2 am21 gn2 it24 s2 irt28 it24 t2 oo23
+172.wav|ia22 oon21 m2 in25 iook28 h2 e23 gn2 ioong22 p2 an21 l2 ooi25 k2 e23
+173.wav|h2 e23 t2 oo23 i21 ien23 kh2 oon23 ts2 irn21 k2 e23 i21 s2 ir21 kh2 ooi21 k2 e23
+174.wav|tsch2 in25 kh2 oong22 iu21 h2 a23 k2 ooi22 s2 an23 m2 oo25
+175.wav|iu21 ia22 h2 a23 h2 a23 h2 oo22 s2 ooi23
+176.wav|n25 s2 irt28 iook28 e22 k2 e23 s2 ir25 tsc2 iet24 k2 am22 s2 irt24 v2 ooi23 iu21 k2 oo23 m2 en22
+177.wav|m2 a22 k2 e23 tsch2 in25 kh2 oong22 ts2 ang23 s2 oon23 h2 e23 k2 oo23 m2 en22
+178.wav|p2 i22 l2 un23 k2 oong22 ph2 i25 f2 u21 v2 ooi23 h2 i22 f2 ung25 ts2 irn22 v2 ooi23 ioong21 th2 eu22 h2 i23 v2 ooi23 kh2 un23 n2 an25 h2 iet24 ap24 p2 ien23 f2 a23 k2 iak24 f2 at24 s2 eu21 t2 en22
+179.wav|ng2 ai25 sc2 ioong22 h2 e23 m25 s2 irt24 iu21 k2 oo23
+180.wav|m25 k2 oo23 iu21 s2 ang25 s2 ir25 v2 ooi23 oo21 l2 i23 t2 u22
+181.wav|ia22 h2 e23 s2 irt28 iook28 e22 k2 e23 f2 u23 ts2 ook24 iung23 m2 oo25
+182.wav|ng2 ai25 tsh2 ir23 kh2 oon23 n25 s2 oo22 s2 irt28 k2 e23 iook28 e22
+183.wav|ia22 t2 eu21 iook28 e22 m25 v2 ooi23 tsh2 oo23 s2 irn25 oo21 l2 i23 t2 u22
+184.wav|n25 iu21 s2 irt28 t2 oo23 n2 ai23 t2 eu21 m25 tsch2 i21 k2 e23 t2 ung21 sc2 i21 m2 oo25
+185.wav|ng2 ai25 m25 k2 i23 t2 et24
+186.wav|k2 e23 n25 s2 irt28 t2 ung21 sc2 i21 ooi23 th2 it28 ph2 iet28 ts2 u23 i23
+187.wav|n25 t2 i21 m2 uk24 tsch2 ien25 s2 oo22 s2 irt28 k2 e23 iook28 e22 k2 e23 ts2 ook24 iung23 m2 oo25
+188.wav|iu21 k2 oong23 t2 ai21 h2 iet24 th2 oong25 k2 oong23 t2 ai21 h2 iet24 ap24 l2 au21 it24 ts2 ir23 v2 i23 s2 oon21 k2 e23 ts2 ook24 iung23
+189.wav|f2 u23 ts2 ook24 iung23 n2 e25
+190.wav|ooi23 ts2 u23 i23 h2 iet24 th2 oong25 h2 iet24 ap24 h2 e23 m25 h2 e23 v2 ooi23 th2 ioong22 t2 ai21 l2 au21 p2 i23 k2 iet24 k2 e23 tsch2 in25 h2 in25
+191.wav|h2 e23 k2 oong22 f2 u23 ts2 ook24 iung23 tsh2 ut24 h2 ien23 ooi23 gn2 ioong22 p2 an21 tsh2 u22 l2 i21
+192.wav|h2 iet24 th2 oong25 h2 iet24 ap24 h2 e23 th2 ioong22 t2 ai21 ooi23 ts2 oon22 i21 ien23 th2 iau25 ts2 irn22 iook28 e22
+193.wav|iu21 p2 i23 k2 iet24 ooi23 t2 oo21 s2 irt28 k2 oo21 sc2 ien21 v2 i25 k2 e23 s2 irt28 v2 ut28 t2 oo21 l2 im21 s2 ui22 h2 an25 k2 oo23 s2 irt24 t2 oong21 k2 e23 iun23 th2 ung23
+194.wav|n25 h2 e23 ts2 oo23 t2 et24 oon23 s2 ir25 s2 irt28 in23 k2 ooi21 ts2 oo23 t2 et24 kh2 ung22 ts2 ir23 t2 oo23 t2 oong21 h2 oo22
+195.wav|n25 iu21 m2 a22 k2 e23 t2 ung21 sc2 i21 ts2 oo23 m25 t2 et24 s2 irt28 k2 e23 m2 oo25
+196.wav|n25 h2 a23 h2 au23 s2 irt28 m2 a22 k2 e23 t2 ung21 sc2 i21
+197.wav|n25 m25 h2 au23 s2 irt28 k2 e23 t2 ung21 sc2 i21 h2 e23 m2 a22 k2 e23
+198.wav|n25 h2 e23 m25 h2 e23 iu21 t2 ui23 m2 a22 k2 e23 s2 irt28 v2 ut28 v2 ooi23 k2 oo23 m2 en22
+199.wav|n25 t2 ui23 n2 ai23 t2 eu21 s2 irt28 v2 ut28 v2 ooi23 k2 oo23 m2 en22
+200.wav|tsch2 iang22 m2 un23 n25 iu21 m2 a22 k2 e23 t2 ung21 sc2 i21 ts2 oo23 m25 t2 et24 s2 irt28 m2 oo25
+201.wav|h2 e23 n2 ai23 t2 eu21 h2 an23 ts2 ir23
+202.wav|ts2 oo23 m25 t2 et24 s2 irt28 th2 ioong22 h2 am25 in21 v2 i23 ng2 ai25 p2 un22 s2 irn21 iu21 k2 oo21 h2 iet24 ap24
+203.wav|n25 h2 a23 h2 au23 s2 irt28 n2 ai23 t2 eu21 t2 ung21 sc2 i21 iu21 m2 a22 k2 e23 k2 im23 kh2 i23 m2 oo25
+204.wav|ng2 ai25 m25 s2 irt28 gn2 iu25 gn2 iuk24 ia23 m25 s2 irt28 th2 ioong22 h2 am25 k2 e23 t2 ung21 sc2 i21
+205.wav|tsh2 u25 th2 et24 ia22 t2 eu21 s2 irt28 v2 ut28 i21 ng2 ooi23 h2 an25 iu21 m2 oo25
+206.wav|ng2 ai25 m25 s2 irt28 l2 at28 k2 e23 t2 ung21 sc2 i21
+207.wav|ng2 ai25 v2 ooi23 th2 ung21 t2 i21 in25 ioong21 s2 ir21 ooi23 th2 it28 ph2 iet28 ts2 u23 i23
+208.wav|n25 h2 e23 m25 h2 e23 s2 irt24 t2 ui23 it24 t2 eu21 s2 irt28 v2 ut28 v2 ooi23 k2 oo23 m2 en22
+209.wav|tsch2 ioong23 h2 a25 k2 ung21 l2 au21 m2 oo21 h2 ai22 ng2 ai25 s2 irt28 l2 e21 ph2 i25 f2 u21 v2 ooi23 h2 i22 f2 ung25 l2 iap28 e22
+210.wav|l2 im21 t2 eu21 tsc2 iu22 ph2 i25 f2 u21 m2 e23 v2 ooi23 h2 i22 f2 ung25 l2 iap28 e22
+211.wav|t2 i23 tsh2 ir23 l2 iau25 k2 oo23 tsh2 ang25 kh2 i25 k2 ien21 ng2 ai25 t2 eu21 v2 ooi23 th2 it28 ph2 iet28 s2 e23 gn2 i23
+212.wav|ng2 ai25 s2 irt28 ts2 ai21
+213.wav|h2 an25 iu21 m2 a22 k2 e23 ooi23 ng2 ai25 t2 eu21 ts2 u23 i23 k2 e23 s2 ir23 tsch2 in25 m2 oo25
+214.wav|n2 a23 h2 e23 iu21 kh2 i25 th2 a21 k2 e23 m2 un23 th2 i25 n25 ts2 oo23 t2 et24 s2 ui25 s2 ir25 th2 ung25 ng2 ai25 t2 eu21 k2 oong22
+215.wav|tsch2 iang22 m2 un23 f2 u23 l2 i21 ts2 am23 ooi23 gn2 ioong22 p2 an21 h2 ang25
+216.wav|k2 au21 gn2 i25 th2 ang21 kh2 ooi21 f2 oong23 t2 oo23 m2 a22 k2 e23 s2 ir25 k2 ien21
+217.wav|n2 a23 h2 e23 iu21 v2 uk24 h2 a21 gn2 in25 th2 am22 ph2 iang23 ts2 oo23 t2 et24 l2 i23 iung23 k2 au21 gn2 i25 th2 ang21 l2 ooi25 th2 oo22 l2 un23
+218.wav|h2 e23 iu21 sc2 i21 ieu23 k2 un22 s2 ui22 ts2 oo23 t2 et24 h2 i23 tsh2 a25 s2 ui22 k2 ien21 ts2 oong21
+219.wav|ts2 ai23 k2 oo23 h2 ioong23 tsch2 ien25 h2 ang25 k2 e23 iu23 s2 u22 ph2 ien22 h2 e23 p2 ioong23 oo21 ts2 oo21 s2 am21 f2 u23 k2 e23 v2 i23 s2 oo22
+220.wav|oo21 ts2 oo21 s2 am21 f2 u23 l2 au21 ph2 i21 t2 an21 ts2 oo23 t2 et24 t2 ep28 t2 oo23 v2 u21 s2 am21 th2 ung22
+221.wav|ph2 iang23 f2 oong25 k2 e23 tsh2 oong25 th2 eu25 iu21 l2 iang25 e22
+222.wav|iu21 s2 ir23 tsch2 in25 k2 e23 s2 ir25 tsc2 iet24 tsch2 iu23 kh2 im23 l2 iang25 e22 f2 u23 l2 i21 s2 ir21 tsch2 iu23 v2 ooi23 k2 oo23 l2 ooi25
+223.wav|t2 i23 gn2 ia21 k2 e23 iu23 s2 u22 ph2 ien22 tsch2 iu23 h2 e23 f2 u23 l2 i21 ts2 am23
+224.wav|h2 e23 iu23 im23 h2 oo25 k2 e23 m2 un23 th2 i25 t2 u23 ts2 oo23 t2 et24 h2 i23 f2 u23 l2 i21 ts2 am23 tsch2 iang22 f2 u23 l2 i21 s2 ir21 th2 en23 s2 u22
+225.wav|k2 au21 gn2 i25 th2 ang21 kh2 ooi21 f2 oong23 h2 e23 ts2 eu21 s2 irn25 tsch2 it24 t2 iam22 t2 oo23 k2 iu22 t2 iam22
+226.wav|tsch2 iang22 m2 un23 ia22 v2 i23 ts2 oo23 t2 et24 ts2 u22 t2 ung21 sc2 i21 m2 oo25
+227.wav|h2 e23 iu23 irt28 k2 e23 t2 ung21 sc2 i21 ts2 oo23 t2 et24 h2 i23 tsh2 a25 s2 ui22 k2 ien21 n2 oon21 s2 eu21 l2 ooi25
+228.wav|tsch2 iang22 m2 un23 ph2 iang23 f2 oong25 k2 e23 t2 en21 ooi23 gn2 ioong22 p2 an21 th2 iau25 ts2 irn22
+229.wav|tsh2 oong25 th2 eu25 t2 en21 h2 e23 s2 am21 th2 oon23 s2 irt24 ts2 oo23 t2 et24 kh2 oon23 tsch2 it24 k2 a21 k2 e23 sc2 i21 ieu23 l2 ooi25 th2 iau25 ts2 irn22 k2 oong21 th2 u23
+230.wav|ph2 iang23 f2 oong25 t2 u22 iu21 s2 e22 s2 irn21 k2 ien21
+231.wav|n2 a23 h2 e23 sc2 i21 ieu23 ph2 ien23 ph2 un25 ia23 h2 e23 gn2 iau23 t2 u23 ts2 oo23 t2 et24 h2 i23 s2 e22 s2 irn21 k2 ien21 n2 a21
+232.wav|m25 s2 ir22 h2 ak24 h2 i23
+233.wav|k2 ie21 m2 oo21 k2 oon22 k2 e23 iook28 e22 h2 e23 kh2 oong22 s2 en21 s2 u23 s2 am21 tsh2 oon21 f2 an23 h2 eu23 s2 irt28
+234.wav|iook28 s2 ui22 h2 e23 s2 irt28 tsh2 uk28 k2 e23 s2 am21 tsh2 oon21 f2 an23 h2 eu23 l2 im21
+235.wav|iook28 ph2 ien22 iu21 oon21 m2 in25 iook28 l2 au21 v2 i23 iook28
+236.wav|oon21 m2 in25 iook28 h2 e23 s2 ooi23 m2 uk24 tsch2 ien25 s2 irt28 k2 e23
+237.wav|gn2 ia21 k2 e23 s2 oong21 h2 eu22 iu21 k2 am22 gn2 iam23 ooi23 sc2 ien21 ts2 u23 kh2 oong22 s2 en21 s2 u23 l2 ooi25 kh2 ung22 ts2 ir23
+238.wav|ia22 h2 a23 ooi23 ts2 u23 s2 a23 kh2 oon23 n25 ooi23 ts2 u23 s2 u22 p2 i22 ia23 h2 e23 ts2 u23 s2 ir23 v2 ut24 th2 eu25
+239.wav|ts2 u23 s2 a23 ts2 u23 h2 oo22 ts2 oo23 t2 et24 iung23 s2 u22 p2 a21 ts2 oong22 n2 oo25 n2 oo25 e22
+240.wav|ooi23 l2 i23 iung23 ts2 irn21 h2 i23 ts2 ut28 gn2 ip28 l2 ooi25 p2 oong21 tsh2 u23 gn2 ia21 k2 e23 th2 am25 tsh2 uk28 tsh2 ut24 l2 ooi25
+241.wav|tsch2 iang22 gn2 ia21 k2 e23 ts2 ooi23 t2 a22 kh2 ooi21 l2 ooi25 t2 ui23 ts2 irn21 h2 i23 ph2 un23 tsh2 ut24 kh2 ieu22 th2 ai23 h2 eu22 tsc2 ioot28 h2 i23
+242.wav|tsh2 ir23 l2 iau25 kh2 i25 k2 ien21 n2 a23 h2 e23 iu21 th2 am25 ts2 oo23 t2 et24 s2 ui25 s2 ir25 tsc2 ioong21 th2 am25 tsh2 uk28 tsh2 ut24 l2 ooi25
+243.wav|ia22 h2 a23 ooi23 s2 irt28 f2 an23 h2 eu23 k2 e23 iook28 e22
+244.wav|tsch2 iang22 m2 un23 n25 s2 irt28 p2 au22 m2 ang25
+245.wav|s2 irt28 p2 au22 l2 e21
+246.wav|ia22 h2 a23 sc2 ien21 s2 irt28 iook28 ph2 ien22 l2 au21 l2 im21 ts2 ir22 tsh2 uk28 iook28 s2 ui22
+247.wav|tsch2 iang22 m2 un23 ng2 ai25 s2 irt28 k2 e23 h2 e23 m2 ak24 k2 e23 iook28 e22
+248.wav|iook28 ph2 ien22 h2 e23 v2 i23 iook28 k2 ie21 m2 oo21 k2 oon22 h2 e23 k2 ie22 gn2 iet28 ts2 ir22 th2 ung23 k2 e23 iook28 e22
+249.wav|ia22 t2 eu21 iook28 e22 ts2 eu23 s2 am21 tsh2 oon21 f2 an23 h2 eu23 s2 irt28
+250.wav|ia22 s2 irt28 tsh2 uk28 k2 e23 iook28 s2 ui22 h2 e23 ooi23 sc2 ien21 l2 im21 m2 oo25
+251.wav|h2 e23 ts2 ui23 m2 i21 ts2 ang23 l2 im21 l2 im21 l2 e21 h2 eu21 s2 am21 s2 irp28 f2 un21 ts2 ung21 n2 ui23 m25 h2 oo22 l2 im21 s2 ui22
+252.wav|h2 ien23 h2 a23 ooi23 ts2 u23 kh2 oong22 s2 en21 s2 u23 l2 ooi25 kh2 ung22 ts2 ir23 s2 oong21 h2 eu22 k2 e23 k2 am22 gn2 iam23
+253.wav|ooi23 gn2 ioong22 p2 an21 ts2 u23
+254.wav|kh2 oon23 n25 ooi23 ts2 u23 s2 u22 p2 i22 ia23 h2 e23 ts2 u23 s2 ir23 v2 ut24 th2 eu25
+255.wav|ts2 u23 s2 u22 p2 i22 h2 oo22 l2 e22
+256.wav|ts2 u23 s2 a23 ts2 u23 h2 oo22 tsch2 iang22 n25 iung23 p2 a21 ts2 oong22 n2 oo25 n2 oo25 e22
+257.wav|gn2 ioong22 ooi23 an22 gn2 ioong25 ts2 oo23
+258.wav|an22 gn2 ioong25 ts2 oo23 t2 et24 p2 oong21 tsh2 u23 iook28 e22 k2 e23 kh2 ip24 s2 u21
+259.wav|gn2 ia21 k2 e23 th2 am25 tsh2 uk28 m25 tsh2 ut24 l2 ooi25 ooi23 l2 au21 n25 iung23 ts2 irn21 h2 i23 ts2 ut28 gn2 ip28 l2 ooi25 tsh2 ir23 l2 iau25
+260.wav|k2 e23 ng2 ai25 ooi23 gn2 ioong22 p2 an21 ts2 oo23
+261.wav|l2 au21 ts2 ooi23 t2 a22 kh2 ooi21 l2 ooi25 t2 ui23 t2 en22 ts2 irn21 h2 i23 ph2 un23 tsh2 ut24 kh2 ieu22 th2 ai23 h2 eu22 ts2 ut28 h2 i23 tsch2 iu23 ts2 oo23 t2 et24
+262.wav|an22 gn2 ioong25 ts2 oo23 iu21 m2 a22 k2 e23 ts2 ook24 iung23
+263.wav|ts2 oo23 t2 et24 l2 i23 iung23 ts2 irn21 h2 i23 p2 oong21 tsh2 u23 n25 tsc2 ioong21 th2 am25 tsh2 uk28 tsh2 ut24 l2 ooi25
+264.wav|h2 e23 tsh2 ir23 l2 iau25 t2 oo23 it24 p2 an23 ng2 ai25 k2 am22 k2 ook24 iu21 th2 am25 ooi23 gn2 ioong22 p2 an21
+265.wav|iu21 th2 am25 ts2 oo23 t2 et24 s2 ui25 s2 ir25 tsc2 ioong21 th2 am25 tsh2 uk28 tsh2 ut24 l2 ooi25
+266.wav|ng2 ai25 t2 i21 l2 e22 ng2 ai25 v2 ooi23 ts2 eu23 t2 en22 ts2 oo23
+267.wav|ng2 a21 h2 iet24 ap24 h2 e23 m25 h2 e23 ts2 irn23 s2 oong25
+268.wav|ng2 a21 th2 i22 v2 un21 h2 e23 m25 h2 e23 ts2 irn23 s2 oong25
+269.wav|ng2 a21 sc2 im21 th2 iau23 h2 e23 m25 h2 e23 ts2 irn23 s2 oong25
+270.wav|l2 ioong25 h2 iet24 ap24 k2 e23 s2 ir25 tsc2 iet24 ng2 ai25 ooi23 ts2 u23 i23 m2 a22 k2 e23
+271.wav|ia22 h2 a23 ng2 ai25 ooi23 th2 ung25 n25 l2 ioong25 th2 i22 v2 un21 h2 iet24 ap24 h2 an25 k2 oo23 sc2 im21 th2 iau23
+272.wav|tsh2 et24 l2 ioong25 gn2 i22 v2 un21 it24 h2 a23 e22 tsch2 iu23 h2 oo22
+273.wav|ng2 ai25 ooi23 tsc2 ioong21 ap24 m2 ak24 t2 ai23 th2 ak24 t2 oo23 gn2 ia21 k2 e23 s2 u22 p2 i22 t2 ang22 l2 ioong25 h2 iet24 ap24
+274.wav|n25 m2 uk24 tsch2 ien25 k2 e23 h2 iet24 ap24 tsch2 in23 ts2 irn23 s2 oong25 k2 oo21 h2 iet24 ap24 h2 e23 it24 p2 ak24 it24 s2 irp28 t2 ai21 h2 iet24 ap24 h2 e23 tsch2 it24 s2 irp28
+275.wav|n25 m2 uk24 tsch2 ien25 k2 e23 th2 i22 v2 un21 tsch2 in23 ts2 irn23 s2 oong25 h2 e23 s2 am21 s2 irp28 l2 iuk24 t2 iam23 p2 at24 th2 u23
+276.wav|gn2 ia21 k2 e23 sc2 im21 th2 iau23 th2 iau23 t2 oo22 tsch2 in23 ts2 irn23 s2 oong25 t2 ak24 f2 un21 ts2 ung21 p2 at24 s2 irp28 h2 a23
+277.wav|ng2 a21 th2 i22 v2 un21 iu21 ts2 irn23 s2 oong25 m2 oo25
+278.wav|th2 i22 v2 un21 tsch2 in23 ts2 irn23 s2 oong25
+279.wav|ng2 ai25 ia22 h2 a23 ooi23 th2 ung25 n25 l2 ioong25 h2 iet24 ap24
+280.wav|tsch2 iang22 tsc2 ioong21 gn2 ia21 k2 e23 ts2 oo22 s2 u22 tsh2 un21 tsh2 irt28
+281.wav|ng2 ai25 ia22 h2 a23 ooi23 th2 ung25 n25 l2 ioong25 th2 i22 v2 un21
+282.wav|ng2 ai25 sc2 ien21 l2 au21 h2 oon25 gn2 iet28 p2 eu22 p2 ioong23 t2 i23 gn2 ia21 k2 e23 s2 u22 kh2 iap28 h2 a21
+283.wav|ooi23 l2 ioong25 k2 i22 k2 iu22
+284.wav|th2 ai23 iook24 s2 irp28 f2 un21 ts2 ung21
+285.wav|ng2 ai25 ia22 h2 a23 ooi23 l2 au21 gn2 ia21 k2 e23 h2 oon25 gn2 iet28 p2 eu22 n2 a21 tsh2 ut24 l2 ooi25
+286.wav|ng2 ai25 ooi23 l2 au21 ap24 m2 ak24 t2 ai23 th2 ak24 t2 oo23 gn2 ia21 k2 e23 s2 u22 p2 i22 t2 ang22 l2 ioong25 h2 iet24 ap24
+287.wav|ng2 a21 h2 iet24 ap24 gn2 ioong22 p2 an21
+288.wav|k2 oo21 h2 iet24 ap24 h2 e23 it24 p2 ak24 it24 s2 irp28 t2 ai21 h2 iet24 ap24 h2 e23 tsch2 it24 s2 irp28
+289.wav|an22 gn2 ioong25 k2 e23 h2 iet24 ap24 iu21 ts2 irn23 s2 oong25 m2 oo25
+290.wav|h2 iet24 ap24 tsh2 irt28 tsch2 in23 ts2 irn23 s2 oong25
+291.wav|ng2 ai25 ooi23 th2 ung25 n25 l2 ioong25 sc2 im21 th2 iau23
+292.wav|tsh2 et24 l2 ioong25 s2 ir25 k2 ien21 h2 e23 it24 f2 un21 ts2 ung21
+293.wav|gn2 ia21 k2 e23 sc2 im21 th2 iau23 t2 ak24 f2 un21 ts2 ung21 th2 iau23 p2 at24 s2 irp28 h2 a23
+294.wav|tsch2 in23 ts2 irn23 s2 oong25 n25 m25 s2 ir22 t2 am21 sc2 im21
+295.wav|tsch2 iang22 m2 un23 s2 oong21 h2 eu22 v2 oon23 iook28 e22 v2 ooi23 th2 ung23 m2 oo25
+296.wav|s2 oong21 h2 eu22 k2 e23 ph2 u23 v2 i23 k2 oo25 t2 eu21 iook28 k2 au21 ia23 h2 e23 t2 ien22 tsc2 iu22
+297.wav|v2 oon23 iook28 ooi23 tsh2 ak24 s2 oong21 h2 eu22 h2 oong23 k2 e23 s2 a21 p2 u23
+298.wav|v2 ooi23 iu21 it24 sc2 it28 e22 th2 ung23 tsch2 iang22 gn2 iun21 n2 ai23 it24 h2 a23
+299.wav|iook28 e22 v2 oon23 h2 oo22 h2 an25 ooi23 m2 iang21 s2 a21 p2 u23 m2 oo25
+300.wav|th2 eu23 h2 i23 k2 au21 t2 ai23 ooi23 gn2 ioong22 p2 an21 t2 ap24 ts2 ang23 v2 ooi23 k2 u23 th2 in23
+301.wav|iook28 e22 v2 oon23 h2 oo22 ts2 oo23 t2 et24 h2 a21 tsh2 oong25 h2 ang25 th2 ung21 m2 oo25
+302.wav|ng2 ai25 ia22 h2 a23 ooi23 l2 au21 gn2 ia21 k2 e23 s2 oong21 h2 eu22 v2 oon23 iook28 e22
+303.wav|gn2 ia21 k2 e23 s2 oong21 h2 eu22 t2 i23 n2 ai23 v2 i23
+304.wav|t2 i23 ng2 ai25 iu23 ph2 ien22 th2 ai23 k2 iook24 p2 i22
+305.wav|ng2 ai25 ooi23 sc2 ien21 tsh2 ak24 n25 s2 oong21 h2 eu22 h2 oong23 k2 e23 s2 a21 p2 u23
+306.wav|iu21 it24 sc2 it28 e22 th2 ung23 tsch2 iang22 gn2 iun21 n2 ai23 it24 h2 a23
+307.wav|h2 e23 k2 am22 k2 ook24 t2 oo23 tsch2 in23 th2 ung23 tsch2 iang22 l2 au21 ng2 ai25 k2 oong22
+308.wav|ng2 ai25 v2 ooi23 h2 an25 h2 a23 s2 e23 gn2 i23 t2 eu21 th2 ung25 n25 v2 oon23 iook28 e22
+309.wav|ng2 a21 s2 oong21 h2 eu22 s2 ang21 t2 oo23 h2 oo22 m2 oo25
+310.wav|s2 oong21 h2 eu22 k2 e23 ts2 u21 ts2 irt24 m2 oo25 k2 am22 gn2 iam23 h2 e23 f2 un22 f2 ung25 s2 et24 k2 e23
+311.wav|ng2 ai25 ia22 h2 a23 ooi23 sc2 ien21 iung23 s2 en21 l2 i21 s2 irt28 iam25 s2 ui22 l2 ooi25 s2 e22 gn2 ia21 k2 e23 s2 oong21 h2 eu22
+312.wav|ng2 ai25 k2 am22 k2 ook24 iu21 t2 eu21 e22 th2 ung23
+313.wav|ng2 ai25 h2 a23 kh2 iang21 s2 u22 t2 eu21 e22 ia22 h2 a23 v2 ooi23 th2 ung23 m2 oo25
+314.wav|h2 a23 m25 v2 ooi23 th2 ung23 l2 e22
+315.wav|n25 ts2 ai23 k2 oo23 gn2 iun21 it24 h2 a23 m2 a21 s2 oong23 tsch2 iu23 v2 oon23 h2 oo22
+316.wav|tsch2 iang22 m2 un23 s2 oong21 h2 eu22 v2 oon23 iook28 e22 h2 e23 ooi23 gn2 ioong22 p2 an21 v2 oon23
+317.wav|sc2 ien21 iung23 s2 en21 l2 i21 s2 irt28 iam25 s2 ui22 s2 e22 ts2 ang23 k2 oo25 t2 eu21 t2 ien22 tsc2 iu22
+318.wav|an22 gn2 ioong25 tsch2 iu23 ts2 oo23 t2 et24 l2 e22 h2 e23 m2 oo25
+319.wav|ts2 ui23 m2 i21 t2 i23 s2 oong21 h2 eu22 h2 oong23 h2 an25 ooi23 m2 iang21 s2 a21 p2 u23
+320.wav|ia22 h2 a23 s2 oong21 h2 eu22 iu21 tsh2 a25 t2 ien22 tsc2 iu22 v2 ooi23 k2 am22 k2 ook24 t2 oo23 m25 s2 ung21 s2 oong22 m2 oo25
+321.wav|k2 i23 t2 et24 m25 h2 oo22 l2 au21 s2 a21 p2 u23 v2 u22 s2 irp24 th2 et24
+322.wav|tsch2 iang22 m2 un23 n25 iu21 k2 i22 t2 oo21 gn2 it24 m2 oo25 oo21 s2 ir22
+323.wav|ng2 ai25 oo21 s2 ir22 oo21 m25 tsh2 ut24 l2 ooi25 h2 e23 m25 h2 e23 p2 i23 k2 iet24
+324.wav|gn2 ioong22 p2 an21 ts2 ang23 s2 oon23 h2 e23 p2 i23 k2 iet24
+325.wav|k2 oon25 tsrh2 oong23 iu21 m2 a22 k2 e23 ooi23 ts2 u23 i23 k2 e23 m2 oo25
+326.wav|m2 a22 k2 e23 h2 e23 th2 ai23 tsh2 oong25 k2 iang23 k2 iam22 tsh2 a25 ng2 ai25 m2 oo25 tsch2 in23 tsch2 in21 tsh2 u22
+327.wav|ts2 oo23 th2 ai23 tsh2 oong25 k2 iang23 k2 iam22 tsh2 a25 tsch2 ien25 ooi23 k2 oon25 tsrh2 oong23 m2 oo25
+328.wav|k2 oon25 tsrh2 oong23 h2 e23 m25 h2 e23 tsch2 in23 m25 s2 ung21 s2 oong22
+329.wav|ts2 oo23 th2 ai23 tsh2 oong25 k2 iang23 k2 iam22 tsh2 a25 tsch2 ien25 ts2 oo23 m2 a22 k2 e23 ooi23 sc2 ien21 k2 oon25 tsrh2 oong23
+330.wav|ng2 ai25 iu21 s2 am21 gn2 it24 m2 oo25 oo21 s2 ir22
+331.wav|sc2 ioong22 oo21 iu23 oo21 m25 tsh2 ut24 l2 ooi25
+332.wav|n25 ph2 in25 s2 oong25 h2 e23 k2 i22 t2 oo21 gn2 it24 ts2 ang23 oo21 it24 p2 ai22 s2 ir22
+333.wav|ng2 ai25 ph2 in25 s2 oong25 t2 u23 h2 e23 it24 gn2 it24 oo21 it24 p2 ai22 s2 ir22
+334.wav|ts2 eu23 gn2 ia21 k2 e23 tsch2 in25 kh2 oong22 h2 e23 p2 i23 k2 iet24
+335.wav|ng2 ai25 h2 i23 ts2 un22 ph2 i23 k2 oon23 tsh2 oong25 k2 e23 t2 ung21 sc2 i21 l2 ooi25 l2 au21 n25 k2 oon23 tsh2 oong25
+336.wav|n25 sc2 ien21 h2 iet24 kh2 un23 it24 h2 a23
+337.wav|h2 oo22 k2 e23 tsch2 iu23 m2 a25 f2 an25 n25 l2 e22
+338.wav|tsch2 iang22 m2 un23 k2 oon23 tsh2 oong25 ooi23 iung23 m2 a22 k2 e23 k2 oon23 n2 oo22
+339.wav|iung23 k2 am21 iu25 kh2 iu25 l2 ooi25 k2 oon23 tsh2 oong25
+340.wav|ia22 h2 a23 ng2 ai25 ooi23 kh2 ooi21 s2 ir22 l2 au21 n25 k2 oon23 tsh2 oong25
+341.wav|m2 a25 f2 an25 n25 f2 an21 h2 ioong23 ts2 oo22 ph2 ien22
+342.wav|ng2 ai25 ooi23 tsc2 ioong21 k2 am21 iu25 kh2 iu25 k2 oon23 gn2 ip28 gn2 ia21 k2 e23 s2 ir23 v2 ut24 t2 u22
+343.wav|v2 ooi23 iu21 t2 eu21 m25 s2 ung21 s2 oong22 tsch2 iang22 n25 gn2 iun21 n2 ai23 it24 h2 a23
+344.wav|ng2 ai25 v2 ooi23 tsch2 in23 l2 ioong23 gn2 iun21 n2 ai23
+345.wav|ng2 ai25 ia22 h2 a23 k2 oon23 tsh2 oong25 k2 oon23 h2 oo22 l2 e21
+346.wav|tsch2 iang22 n25 gn2 iun21 n2 ai23 ng22 t2 oo23 s2 irp28 f2 un21 ts2 ung21 ts2 ang23 h2 i23 ph2 ien23 s2 oo22
+347.wav|ts2 oo23 th2 ai23 tsh2 oong25 k2 iang23 k2 iam22 tsh2 a25 tsch2 ien25 ooi23 k2 oon23 tsh2 oong25 m2 oo25
+348.wav|ooi23 ooi23 iung23 tsch2 iang23 s2 ui22 l2 ooi25 k2 oon23 tsh2 oong25
+349.wav|ng2 ai25 ia22 h2 a23 ooi23 l2 au21 n25 k2 oon23 tsh2 oong25
+350.wav|tsch2 iang22 n25 f2 an21 h2 ioong23 ts2 oo22 ph2 ien22 t2 a22 ts2 et24 s2 ooi23
+351.wav|tsch2 iang23 s2 ui22 k2 oon23 gn2 ip28 tsh2 oong25 t2 u22 v2 ooi23 k2 am22 k2 ook24 t2 oo23 m25 s2 ung21 s2 oong22
+352.wav|iu21 t2 eu21 m25 s2 ung21 s2 oong22 tsch2 iang22 n25 gn2 iun21 it24 h2 a23
+353.wav|tsch2 iang22 tsh2 irt28 tsc2 iap24 t2 oo23 ph2 ien23 s2 oo22 oo21 tsch2 iang23 tsch2 iu23 ts2 oo23 t2 et24 l2 e21
+354.wav|ng2 ai25 t2 en22 it24 h2 a23 ts2 ai23 k2 oo23 l2 ooi25 kh2 oon23 n25
+355.wav|ng2 a21 gn2 iau23 oo21 m25 tsh2 ut24 l2 ooi25 ooi23 gn2 ioong22 p2 an21
+356.wav|th2 oo21 gn2 iau23 k2 e23 k2 oo23 tsh2 ang25 v2 ooi23 m25 s2 ung21 s2 oong22 m2 oo25
+357.wav|iu21 k2 i22 k2 iu22 m2 oo25 oo21 gn2 iau23 tsch2 iu23 ooi23 th2 oo21 gn2 iau23
+358.wav|th2 oo21 gn2 iau23 k2 e23 s2 ir25 tsc2 iet24 ng2 ai25 ooi23 ts2 u23 i23 m2 a22 k2 e23
+359.wav|m2 a22 k2 e23 tsch2 in25 kh2 oong22 ooi23 t2 eu23 th2 oo21 gn2 iau23 k2 oon22
+360.wav|t2 eu23 th2 oo21 gn2 iau23 k2 oon22 ooi23 gn2 ioong22 p2 an21 ts2 eu23 k2 u23 n2 oo22
+361.wav|ng2 ai25 ooi23 gn2 ioong22 p2 an21 i23 f2 oong25 p2 i23 gn2 iau23 th2 oo23 k2 am22 gn2 iam23 k2 e23 f2 at24 s2 en21
+362.wav|t2 eu23 th2 oo21 gn2 iau23 k2 oon22 ooi23 p2 ioong23 k2 i22 k2 iu22
+363.wav|ng2 a21 ph2 oong25 k2 oong21 tsch2 in23 ts2 oong23 tsch2 in23 th2 ung23
+364.wav|iu21 m2 a22 k2 e23 ph2 an23 f2 ap24 ts2 oo23 t2 et24 k2 am22 kh2 iang21 ng2 a21 k2 ien21 kh2 u22
+365.wav|ng2 ai25 m2 ia21 kh2 oon23 kh2 oon23
+366.wav|gn2 ia21 k2 e23 ph2 oong25 k2 oong21 ts2 oong23 t2 oo23 tsch2 in23 l2 i23 h2 ooi23
+367.wav|n25 iu21 k2 i22 k2 iu22 m2 oo25 oo21 gn2 iau23 l2 e22
+368.wav|iu21 p2 at24 t2 iam22 ts2 ung21 m2 oo25 oo21 gn2 iau23
+369.wav|ts2 eu23 gn2 ia21 k2 e23 tsch2 in25 kh2 oong22 ooi23 th2 oo21 gn2 iau23 gn2 iau23 ts2 ang23 ph2 ai25 t2 et24 tsh2 ut24 l2 ooi25
+370.wav|ng2 ai25 ia22 h2 a23 tsch2 iu23 h2 i23 ts2 un22 ph2 i23 th2 oo21 gn2 iau23 k2 e23 t2 ung21 sc2 i21
+371.wav|n25 sc2 ien21 h2 iu21 sc2 it24 it24 h2 a23
+372.wav|th2 oo21 gn2 iau23 h2 e23 ooi23 gn2 ioong22 p2 an21 ts2 oo23 n2 oo22
+373.wav|h2 e23 l2 i23 iung23 th2 oo21 gn2 iau23 k2 oon22 tsch2 iung25 ph2 oong25 k2 oong21 t2 u22 l2 au21 gn2 iau23 th2 oo21 tsh2 ut24 l2 ooi25
+374.wav|ng2 ai25 ia22 h2 a23 l2 au21 ooi23 iung23 k2 e23 t2 ung21 sc2 i21 t2 ai23 l2 ooi25 l2 e21
+375.wav|th2 oo21 gn2 iau23 k2 e23 k2 oo23 tsh2 ang25 v2 ooi23 k2 ien21 kh2 u22 m2 oo25
+376.wav|t2 i23 th2 oo21 gn2 iau23 k2 e23 k2 oo23 tsh2 ang25 v2 ooi23 iu21 m25 s2 ung21 s2 oong22 tsch2 iang22 n25 gn2 iun21 n2 ai23 it24 h2 a23
+377.wav|ng2 ai25 ia22 h2 a23 k2 i23 k2 in21 l2 au21 gn2 ia21 k2 e23 th2 oo21 tsh2 ut24 l2 ooi25 l2 e21
+378.wav|n25 iu21 tsh2 ir23 t2 oo22 h2 a23 tsh2 ir23 ien25 m2 oo25
+379.wav|kh2 iang21 s2 ung21 t2 oo21 l2 e22 an22 ts2 ir22 s2 e23
+380.wav|tsch2 iang22 m2 un23 t2 eu23 th2 oo21 gn2 iau23 k2 oon22 ooi23 gn2 ioong22 p2 an21 ts2 eu23 k2 u23 n2 oo22
+381.wav|t2 ak24 gn2 it24 it24 th2 in23 ooi23 l2 au21 gn2 iau23 k2 oon22 tsch2 in21 s2 e22 ts2 eu23 f2 u23
+382.wav|m2 e23 ooi23 ts2 u23 i23 gn2 iau23 k2 oon22 k2 e23 th2 ung21 th2 eu23
+383.wav|th2 ang21 k2 oong22 t2 eu23 th2 oo21 gn2 iau23 k2 oon22 iung25 i23 tsh2 oo23 s2 irn25 k2 am22 gn2 iam23
+384.wav|k2 e23 ooi23 gn2 ioong22 p2 an21 l2 ooi25 i23 f2 oong25
+385.wav|t2 ak24 gn2 it24 tsch2 in21 s2 e22 gn2 iau23 k2 oon22 l2 au21 v2 i25 tsh2 ir25 gn2 iau23 k2 oon22 k2 e23 th2 ung21 th2 eu23
+386.wav|h2 an25 ooi23 ts2 u23 i23 ts2 oo23 m25 t2 et24 l2 au21 gn2 iau23 th2 ooi23 e22 tsh2 eu21 k2 oo23 ieu21 e22 i21 s2 oong23
+387.wav|m2 e23 ts2 oo23 m25 t2 et24 l2 au21 gn2 iau23 th2 ooi23 e22 p2 ioong23 t2 i23 th2 i23 n2 ai25 h2 oong23
+388.wav|ts2 oo23 m2 a22 k2 e23 ooi23 f2 an21 s2 irn21 n2 e25
+389.wav|k2 i22 k2 iu22 ooi23 f2 an21 s2 irn21 it24 p2 ai22
+390.wav|m2 oo25 f2 an21 s2 irn21 ts2 oo23 m2 a22 k2 e23 iung25 i23 p2 oot24 tsh2 oong21 e22
+391.wav|ng2 ai25 ooi23 gn2 ioong22 p2 an21 ts2 ang23 t2 i21 k2 i23 k2 in21 p2 oot24 tsh2 oong21 e22 l2 e22
+392.wav|h2 e23 iu21 tsh2 oong21 e22 v2 ooi23 th2 ung23 m2 oo25
+393.wav|ia22 h2 a23 k2 e23 ts2 ir21 s2 ir23 n25 h2 e23 m25 h2 e23 v2 ooi23 k2 am22 k2 ook24 t2 oo22 m25 s2 ung21 s2 oong22
+394.wav|n25 sc2 ioong22 ooi23 f2 an21 h2 ioong23 n2 ai23 ph2 ien22 s2 ak24
+395.wav|tsh2 oong25 kh2 i25 s2 ooi23 t2 en22 m25 th2 in21 th2 ung21 s2 irn21 th2 i22 h2 e23 m25 h2 e23 v2 ooi23 tsh2 ut24 h2 ien23 m2 un23 th2 i25
+396.wav|f2 an21 s2 irn21 k2 e23 s2 ir25 tsc2 iet24 ooi23 ts2 u23 i23 m2 a22 k2 e23 s2 ir23 tsch2 in25
+397.wav|m2 oo25 f2 an21 s2 irn21 k2 am22 v2 ooi23 ts2 oo23 m25 t2 et24
+398.wav|ng2 ai25 ia22 h2 a23 ooi23 l2 au21 n25 f2 an21 s2 irn21
+399.wav|ts2 oo23 t2 et24 m25 f2 an21 s2 irn21 m2 oo25
+400.wav|v2 ooi23 m25 s2 ung21 s2 oong22 h2 e23 m2 oo25
+401.wav|f2 an21 s2 irn21 s2 oong21 h2 eu22 v2 ooi23 th2 ung23 m2 oo25
+402.wav|ng2 ai25 v2 ooi23 tsch2 in23 l2 ioong23 kh2 iang21 s2 u22 t2 eu21
+403.wav|m25 f2 an21 s2 irn21 k2 iang21 ph2 a23 ph2 i25 f2 u21 v2 ooi23 p2 oot24 tsh2 oong21 e22
+404.wav|ia22 h2 a23 ng2 ai25 ooi23 l2 au21 n25 f2 an21 s2 irn21
+405.wav|f2 an21 h2 ioong23 ts2 oo22 ph2 ien22
+406.wav|an22 gn2 ioong25 k2 e23 ts2 ir21 s2 ir23 h2 e23 m25 h2 e23 v2 ooi23 k2 am22 k2 ook24 m25 s2 ung21 s2 oong22
+407.wav|h2 an25 ts2 oo23 t2 et24
+408.wav|tsch2 iang22 m2 un23 k2 i22 k2 iu22 h2 an25 ooi23 ts2 ai23 k2 oo23 f2 an21 s2 irn21 it24 p2 ai22
+409.wav|t2 ak24 l2 ioong22 t2 iam22 ts2 ung21 it24 th2 in23 ooi23 f2 an21 s2 irn21 it24 p2 ai22
+410.wav|tsch2 iang22 m2 un23 tsh2 oong25 kh2 i25 s2 ooi23 t2 en22 m25 th2 in21 th2 ung21 s2 irn21 th2 i22 h2 e23 m25 h2 e23 v2 ooi23 tsh2 ut24 m2 un23 th2 i25
+411.wav|tsh2 oong25 kh2 i25 s2 ooi23 t2 en22 m25 th2 in21 th2 ung21 m2 oo25 f2 an21 s2 irn21 iung25 i23 p2 oot24 tsh2 oong21 e22
+412.wav|ts2 oo23 m2 a22 k2 e23 v2 ooi23 p2 oot24 tsh2 oong21 e22
+413.wav|m2 oo25 f2 an21 s2 irn21 ph2 i25 f2 u21 tsh2 oong25 kh2 i25 s2 u23 ap24 p2 et24 v2 ooi23 kh2 iam23 h2 iet24 kh2 iet24 ioong21 tsh2 oo23 s2 irn25 s2 u23 s2 oong21
+414.wav|ia22 ts2 ung22 k2 e23 s2 oong21 h2 eu22 tsch2 iu23 h2 e23 p2 oot24 tsh2 oong21 e22
+415.wav|n2 a23 h2 e23 an22 gn2 ioong25 s2 irn24 tsch2 iu23 h2 e23 tsch2 in23 tsh2 ung23 ieu23
+416.wav|k2 u23 s2 oo22 ooi23 kh2 ook24 s2 irt28 ts2 oo23
+417.wav|iu21 sc2 i21 ieu23 tsch2 iang22 l2 au21 ng2 ai25 k2 oong22 ng2 ai25 t2 eu21 v2 ooi23 h2 iap28 tsh2 u23 n25
+418.wav|f2 uk28 kh2 ien23 iun23 th2 ung23 ooi23 gn2 ioong22 p2 an21 ts2 oo23 ts2 ang23 tsh2 ook28
+419.wav|ts2 oo23 m2 a22 k2 e23 ooi23 ts2 oo23 f2 uk28 kh2 ien23 iun23 th2 ung23
+420.wav|f2 uk28 kh2 ien23 iun23 th2 ung23 m25 ts2 oo23 ts2 oo23 m25 t2 et24 h2 e23 m2 oo25
+421.wav|th2 ai23 k2 ut24 tsc2 iet24 k2 e23 iun23 th2 ung23 h2 e23 gn2 ioong22 p2 an21 ts2 oo23 n2 oo22
+422.wav|ts2 oo23 tsch2 ioon25 k2 ut24 tsc2 iet24 iun23 th2 ung23 h2 e23 gn2 ioong22 p2 an21 ts2 oo23 n2 oo22
+423.wav|f2 uk28 kh2 ien23 iun23 th2 ung23 k2 i22 k2 iu22 ts2 oo23 it24 p2 ai22
+424.wav|f2 uk28 kh2 ien23 iun23 th2 ung23 it24 p2 ai22 ts2 oo23 k2 i22 k2 iu22
+425.wav|iu21 n2 ai23 t2 eu21 f2 uk28 kh2 ien23 iun23 th2 ung23 ts2 oo23 t2 et24 ts2 oo23 n2 oo22
+426.wav|gn2 ioong22 p2 an21 ts2 oo23 iun23 th2 ung23 ts2 ang23 ts2 oo23 t2 et24 v2 i25 tsh2 ir25 s2 u22 k2 iook24 k2 e23 k2 ung21 n2 en25
+427.wav|ng2 ai25 ooi23 gn2 ioong22 p2 an21 ts2 ang23 t2 i21 tsch2 it24 k2 a21 k2 e23 s2 u22 k2 iook24 th2 in21 th2 ung21 k2 ung21 n2 en25 p2 ien23 tsh2 a21 l2 e22
+428.wav|n25 s2 ooi23 t2 en22 k2 e23 s2 ir25 k2 ien21 th2 ioong22 k2 iu22 l2 e22
+429.wav|s2 u22 k2 iook24 th2 in21 th2 ung21 k2 e23 k2 ung21 n2 en25 h2 a23 tsh2 a21
+430.wav|ng2 ai25 ia22 h2 a23 ooi23 l2 au21 n25 ts2 oo23 f2 uk28 kh2 ien23 iun23 th2 ung23
+431.wav|ts2 oo23 f2 uk28 kh2 ien23 iun23 th2 ung23 k2 e23 s2 ir25 tsc2 iet24 h2 e23 v2 ooi23 th2 ung23 tsch2 iang22 l2 au21 ng2 ai25 k2 oong22
+432.wav|h2 oo22 k2 e23 ooi23 gn2 ioong22 p2 an21 ts2 oo23 n2 oo22
+433.wav|th2 en25 ng2 a21 kh2 ieu22 l2 in23 l2 ooi25 ts2 oo23 tsch2 iu23 ts2 oo23 t2 et24
+434.wav|h2 e23 p2 it24 ieu23 k2 e23 s2 ir25 tsc2 iet24 ng2 ai25 ia23 v2 ooi23 p2 oong21 tsh2 u23 n25
+435.wav|ia22 h2 a23 m2 a25 f2 an25 n25 sc2 ien21 th2 ung21 it24 h2 a23 s2 u22 ts2 ir22 th2 eu25 ts2 oo23 k2 iu23 h2 i22 l2 ooi25 tsh2 un21 tsh2 irt28 s2 irp28 h2 a23
+436.wav|l2 ien25 sc2 iuk28 an22 gn2 ioong25 ts2 oo23 tsch2 iu23 ts2 oo23 t2 et24
+437.wav|ts2 ai23 k2 oo23 l2 ooi25 tsch2 iu23 h2 e23 th2 ung21 it24 h2 a23 k2 iook24 ts2 ir22 th2 eu25 m2 e23 h2 e23 ts2 oo23 k2 iu23 h2 i22 l2 ooi25 tsh2 un21 tsh2 irt28 s2 irp28 h2 a23
+438.wav|ia22 h2 a23 v2 ooi23 m25 s2 ung21 s2 oong22 m2 oo25
+439.wav|s2 a23 h2 a21 l2 ooi25 h2 e23 ts2 oo23 k2 ien21 k2 ut24 tsc2 iet24 k2 au22 k2 ut24 tsc2 iet24 l2 au21 tsch2 it24 k2 ut24 tsc2 iet24 k2 e23 tsch2 ioon25 k2 ut24 tsc2 iet24 iun23 th2 ung23
+440.wav|ia22 t2 eu21 iun23 th2 ung23 ooi23 ts2 oo23 k2 i22 k2 iu22
+441.wav|v2 oon25 ts2 ak24 iun23 th2 ung23 k2 e23 k2 oo23 tsh2 ang25 ooi23 s2 irp28 ng22 t2 oo23 gn2 i23 s2 irp28 f2 un21 ts2 ung21
+442.wav|ts2 oo23 ia22 t2 eu21 iun23 th2 ung23 iu21 m2 a22 k2 e23 h2 oo22 tsh2 u23
+443.wav|ia22 t2 eu21 iun23 th2 ung23 ts2 oo23 t2 et24 iu21 h2 au22 v2 i25 tsh2 ir25 gn2 ia21 k2 e23 s2 u22 k2 iook24 ts2 ui23 th2 ai23 k2 ung21 n2 en25
+444.wav|n25 ooi23 t2 oo21 t2 oo21 l2 ooi25 ph2 i23 h2 ap28
+445.wav|ng2 ai25 it24 th2 in23 v2 ooi23 h2 oo22 h2 oo22 l2 ooi25 ts2 oo23 iun23 th2 ung23
+446.wav|ng2 ai25 gn2 ioong22 p2 an21 ts2 ang23 t2 i21 tsch2 it24 k2 a21 k2 e23 s2 u22 k2 iook24 th2 in21 th2 ung21 k2 ung21 n2 en25 p2 ien23 tsh2 a21
+447.wav|gn2 ia21 k2 e23 s2 u22 k2 iook24 m2 oo25 f2 ap24 th2 u23 tsch2 ioong23 th2 eu25 p2 ai22 an22 gn2 ioong25 th2 in21 th2 ung21 tsch2 iu23 p2 eu22 s2 ir23 k2 ung21 n2 en25 p2 ien23 tsh2 a21
+448.wav|m25 ts2 oo23 f2 uk28 kh2 ien23 iun23 th2 ung23 k2 am22 v2 ooi23 ts2 oo23 m25 t2 et24
+449.wav|m25 ts2 oo23 f2 uk28 kh2 ien23 iun23 th2 ung23 v2 ooi23 p2 un21 s2 u22 k2 iook24 th2 in21 th2 ung21 k2 ung21 n2 en25 p2 ien23 t2 oo23 h2 an25 kh2 a23 tsh2 a21
+450.wav|gn2 iam25 tsh2 ung23 k2 e23 s2 ir25 tsc2 iet24 v2 ooi23 tsh2 oo23 s2 irn25 s2 u22 k2 iook24 tsh2 an25 ts2 oong23
+451.wav|f2 uk28 kh2 ien23 iun23 th2 ung23 gn2 ien25 l2 ooi25 h2 e23 an22 tsh2 ung23 ieu23
+452.wav|tsch2 iang22 m2 un23 h2 iet24 th2 oong25 gn2 ioong22 p2 an21 tsh2 et24 l2 ioong25
+453.wav|h2 iet24 th2 oong25 ooi23 k2 i22 t2 oo21 ts2 ang23 s2 oon23 h2 e23 ts2 irn23 s2 oong25
+454.wav|tsch2 iang22 m2 un23 h2 iet24 th2 oong25 ooi23 t2 i23 m2 a22 k2 e23 s2 ir25 tsc2 iet24 tsh2 et24 l2 ioong25
+455.wav|th2 oong25 gn2 iau23 ph2 iang23 ts2 oo23 m2 a22 k2 e23 sc2 i21 ieu23 l2 ioong25 h2 iet24 th2 oong25
+456.wav|h2 iet24 th2 oong25 k2 i21 ooi23 gn2 ioong22 p2 an21 iung23
+457.wav|ooi23 gn2 ioong22 p2 an21 p2 oong21 tsh2 u23 th2 oong25 gn2 iau23 ph2 iang23 ph2 iang23 gn2 in25 kh2 ung22 ts2 ir23 h2 iet24 th2 oong25
+458.wav|oon23 s2 ir25 tsh2 et24 l2 ioong25 h2 iet24 th2 oong25 ts2 oo23 m2 a22 k2 e23 tsch2 in23 tsh2 ung23 ieu23
+459.wav|h2 e23 k2 oong22 h2 iet24 th2 oong25 tsh2 ut24 h2 ien23 f2 an22 s2 oong25 ooi23 gn2 ioong22 p2 an21 ts2 ang23 h2 oo22 n2 oo22
+460.wav|h2 iet24 th2 oong25 tsh2 et24 l2 ioong25 iu21 n2 ai23 t2 eu21 f2 oong21 s2 irt24
+461.wav|tsh2 et24 l2 ioong25 h2 iet24 th2 oong25 v2 ooi23 th2 ung23 m2 oo25
+462.wav|ng2 ai25 ia22 h2 a23 ooi23 th2 ung25 n25 l2 ioong25 f2 an23 tsch2 ien25 h2 iet24 th2 oong25
+463.wav|n25 th2 eu25 p2 ai22 s2 irt24 iung23 h2 iet24 th2 oong25 k2 i21 l2 ioong25 k2 oo23 tsch2 it24 k2 a21 k2 e23 h2 iet24 th2 oong25 m2 oo25
+464.wav|ng2 ai25 t2 i23 v2 uk24 h2 a21 h2 e23 t2 i23 s2 irt28 f2 an23 tsch2 ien25 p2 an23 t2 iam22 ts2 ung21 tsh2 et24 l2 ioong25
+465.wav|ooi23 kh2 oon23 tsch2 it24 k2 a21 k2 e23 h2 iet24 th2 oong25 h2 e23 m25 h2 e23 v2 un22 th2 in23
+466.wav|tsch2 it24 k2 a21 oon23 s2 ir25 l2 ooi25 tsh2 et24 l2 ioong25 h2 iet24 th2 oong25 h2 e23 tsch2 in23 tsh2 ung23 ieu23
+467.wav|ng2 ai25 it24 th2 in23 v2 ooi23 ts2 eu23 s2 ir25 k2 ien21 l2 ooi25 tsh2 et24 l2 ioong25
+468.wav|ng2 ai25 ia22 h2 a23 ooi23 iung23 h2 iet24 th2 oong25 k2 i21 l2 au21 n25 tsh2 et24 l2 ioong25 h2 iet24 th2 oong25
+469.wav|tsch2 iang22 m2 un23 ooi23 gn2 ioong22 p2 an21 tsh2 et24 l2 ioong25
+470.wav|t2 i23 gn2 ia21 k2 e23 s2 u22 ts2 ir22 k2 u22 ts2 irm21 tsch2 i22 it24 t2 it24 h2 iet24 tsch2 iu23 ts2 oo23 t2 et24
+471.wav|v2 ooi23 iu21 it24 sc2 it28 e22 th2 ung23 tsch2 iang22 gn2 iun21 it24 h2 a23
+472.wav|n25 sc2 ioong22 ooi23 k2 u22 n2 ai23 ts2 ak24 s2 u22 ts2 ir22 th2 eu25
+473.wav|k2 u22 s2 u22 ts2 ir22 k2 ung21 h2 oo22 l2 e22
+474.wav|tsch2 iang22 m2 un23 ng2 a21 h2 iet24 th2 oong25 k2 i22 t2 oo21
+475.wav|gn2 ia21 k2 e23 h2 iet24 th2 oong25 it24 p2 ak24 sc2 i23 s2 irp28
+476.wav|tsch2 iang22 m2 un23 an22 gn2 ioong25 ts2 irn23 s2 oong25 m2 oo25
+477.wav|h2 e23 iu21 h2 a23 k2 oo21 t2 eu21
+478.wav|k2 e23 ooi23 gn2 ioong22 p2 an21 ts2 ang23 h2 oo22
+479.wav|n25 m2 uk24 tsch2 ien25 iu21 s2 irt28 k2 oong23 h2 iet24 th2 oong25 k2 e23 iook28 e22 l2 ooi25 kh2 ung22 ts2 ir23 m2 oo25
+480.wav|n2 ang23 ng2 ooi23 s2 irt28 t2 ung21 sc2 i21 m2 e23 ooi23 h2 oo22 h2 oo22 kh2 ung22 ts2 ir23
+481.wav|k2 e23 k2 oong23 h2 iet24 th2 oong25 k2 e23 iook28 e22 ooi23 m2 a22 k2 e23 s2 ir25 tsc2 iet24 s2 irt28
+482.wav|f2 an23 tsch2 ien25 ooi23 sc2 ien21 s2 irt28 k2 oong23 h2 iet24 th2 oong25 k2 e23 iook28 e22
+483.wav|ng2 ai25 it24 th2 in23 v2 ooi23 k2 i23 t2 et24 oon23 s2 ir25 s2 irt28

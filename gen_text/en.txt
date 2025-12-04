@@ -5,3 +5,6 @@ en_04.wav|wˈɔːɹnɪŋ, sˌɛɡməntˈeɪʃən fˈɔlt.
 en_05.wav|tɹˈaɪɪŋ təbi bˈɛɾɚ.
 en_06.wav|stˈaɪɹəfˌoʊm
 en_07.wav|dˌiːhjˈuːmɪdˌɪfaɪɚ
+en_08.wav|ɡuːɡəl
+en_09.wav|ˌeɪˈaɪ
+en_10.wav|ɐ , ˈaɪ

@@ -56,6 +56,7 @@ def run(rank, n_gpus, hps):
   if rank == 0:
     logger = utils.get_logger(hps.model_dir)
     logger.info(hps)
+    logger.info(f"Symbols length: {len(symbols)}")
     utils.check_git_hash(hps.model_dir)
     writer = SummaryWriter(log_dir=hps.model_dir)
     writer_eval = SummaryWriter(log_dir=os.path.join(hps.model_dir, "eval"))
@@ -80,6 +81,14 @@ def run(rank, n_gpus, hps):
     eval_loader = DataLoader(eval_dataset, num_workers=8, shuffle=False,
         batch_size=hps.train.batch_size, pin_memory=True,
         drop_last=False, collate_fn=collate_fn)
+    # <── 就在這邊之上插入 3 行 debug print ───────────────────
+  if rank == 0:   # 只在 rank 0 印一次就好
+      print(">>> DEBUG config",
+            "n_speakers:", hps.data.n_speakers,
+            "gin_channels:", hps.model.gin_channels,
+            "checkpoint dir:", hps.model_dir,
+            flush=True)
+  # ──────────────────────────────────────────────────────────；；
 
   net_g = SynthesizerTrn(
       len(symbols),
@@ -89,17 +98,20 @@ def run(rank, n_gpus, hps):
       **hps.model).cuda(rank)
   net_d = MultiPeriodDiscriminator(hps.model.use_spectral_norm).cuda(rank)
   optim_g = torch.optim.AdamW(
-      net_g.parameters(), 
-      hps.train.learning_rate, 
-      betas=hps.train.betas, 
+      net_g.parameters(),
+      hps.train.learning_rate,
+      betas=hps.train.betas,
       eps=hps.train.eps)
   optim_d = torch.optim.AdamW(
       net_d.parameters(),
-      hps.train.learning_rate, 
-      betas=hps.train.betas, 
+      hps.train.learning_rate,
+      betas=hps.train.betas,
       eps=hps.train.eps)
-  net_g = DDP(net_g, device_ids=[rank])
-  net_d = DDP(net_d, device_ids=[rank])
+  # net_g = DDP(net_g, device_ids=[rank])
+  # net_d = DDP(net_d, device_ids=[rank])
+  # n_speakers 設定為 0 做以下修改
+  net_g = DDP(net_g, device_ids=[rank], find_unused_parameters=True)
+  net_d = DDP(net_d, device_ids=[rank], find_unused_parameters=True)
 
   try:
     _, _, _, epoch_str = utils.load_checkpoint(utils.latest_checkpoint_path(hps.model_dir, "G_*.pth"), net_g, optim_g)
@@ -146,26 +158,56 @@ def train_and_evaluate(rank, epoch, hps, nets, optims, schedulers, scaler, loade
       y_hat, l_length, attn, ids_slice, x_mask, z_mask,\
       (z, z_p, m_p, logs_p, m_q, logs_q) = net_g(x, x_lengths, spec, spec_lengths, speakers)
 
+      # --- 加入以下限制 ids_slice 的程式碼 ---
+      # 計算每個樣本允許的最大起始索引 (以 hop_length 為單位)
+      # 確保切片結束位置 (起始索引 + segment_size) 不超過 y_lengths
+      # max_start_index_audio = y_lengths - hps.train.segment_size
+      # max_ids_slice_val = max_start_index_audio // hps.data.hop_length
+
+      # 處理 y_lengths 小於 segment_size 的情況，此時 max_ids_slice_val 可能為負數，應至少為 0
+      # clamp(..., min=0) 可以確保起始索引不為負
+      # 但是如果 y_lengths < hps.train.segment_size，表示這個樣本無法取出完整的 segment_size，可能需要更換樣本或調整 segment_size
+      # 簡單起見，我們先確保計算出的起始索引不會超出 y_lengths - segment_size
+      max_valid_start_audio = y_lengths - hps.train.segment_size
+      # 確保 max_valid_start_audio 不為負
+      max_valid_start_audio = torch.clamp(max_valid_start_audio, min=0)
+
+      # 將音訊取樣點的起始索引轉換回 ids_slice 的單位 (hop_length)
+      max_ids_slice_val = max_valid_start_audio // hps.data.hop_length
+
+      # 限制 ids_slice 的值，使其不超過計算出的最大值
+      ids_slice = torch.clamp(ids_slice, max=max_ids_slice_val.long())
+      # --- 限制 ids_slice 的程式碼結束 ---
+
       mel = spec_to_mel_torch(
-          spec, 
-          hps.data.filter_length, 
-          hps.data.n_mel_channels, 
+          spec,
+          hps.data.filter_length,
+          hps.data.n_mel_channels,
           hps.data.sampling_rate,
-          hps.data.mel_fmin, 
+          hps.data.mel_fmin,
           hps.data.mel_fmax)
       y_mel = commons.slice_segments(mel, ids_slice, hps.train.segment_size // hps.data.hop_length)
       y_hat_mel = mel_spectrogram_torch(
-          y_hat.squeeze(1), 
-          hps.data.filter_length, 
-          hps.data.n_mel_channels, 
-          hps.data.sampling_rate, 
-          hps.data.hop_length, 
-          hps.data.win_length, 
-          hps.data.mel_fmin, 
+          y_hat.squeeze(1),
+          hps.data.filter_length,
+          hps.data.n_mel_channels,
+          hps.data.sampling_rate,
+          hps.data.hop_length,
+          hps.data.win_length,
+          hps.data.mel_fmin,
           hps.data.mel_fmax
       )
-
-      y = commons.slice_segments(y, ids_slice * hps.data.hop_length, hps.train.segment_size) # slice 
+      # print("--- Debugging Slice Segments in train_and_evaluate ---")
+      # print(f"Shape of y: {y.shape}")
+      # print(f"Shape of y_lengths: {y_lengths.shape}") # 新增這行
+      # print(f"Value of y_lengths: {y_lengths}") # 新增這行，打印所有值
+      # print(f"Shape of ids_slice: {ids_slice.shape}")
+      # print(f"Value of ids_slice (first few): {ids_slice[:5]}")
+      # print(f"hps.data.hop_length: {hps.data.hop_length}")
+      # print(f"hps.train.segment_size: {hps.train.segment_size}")
+      # print(f"Calculated start index (first few): {(ids_slice * hps.data.hop_length)[:5]}")
+      # print("----------------------------------------------------")
+      y = commons.slice_segments(y, ids_slice * hps.data.hop_length, hps.train.segment_size) # slice
 
       # Discriminator
       y_d_hat_r, y_d_hat_g, _, _ = net_d(y, y_hat.detach())
@@ -204,22 +246,22 @@ def train_and_evaluate(rank, epoch, hps, nets, optims, schedulers, scaler, loade
           epoch,
           100. * batch_idx / len(train_loader)))
         logger.info([x.item() for x in losses] + [global_step, lr])
-        
+        logger.info(f"Symbols length check during training: {len(symbols)}")
         scalar_dict = {"loss/g/total": loss_gen_all, "loss/d/total": loss_disc_all, "learning_rate": lr, "grad_norm_d": grad_norm_d, "grad_norm_g": grad_norm_g}
         scalar_dict.update({"loss/g/fm": loss_fm, "loss/g/mel": loss_mel, "loss/g/dur": loss_dur, "loss/g/kl": loss_kl})
 
         scalar_dict.update({"loss/g/{}".format(i): v for i, v in enumerate(losses_gen)})
         scalar_dict.update({"loss/d_r/{}".format(i): v for i, v in enumerate(losses_disc_r)})
         scalar_dict.update({"loss/d_g/{}".format(i): v for i, v in enumerate(losses_disc_g)})
-        image_dict = { 
+        image_dict = {
             "slice/mel_org": utils.plot_spectrogram_to_numpy(y_mel[0].data.cpu().numpy()),
-            "slice/mel_gen": utils.plot_spectrogram_to_numpy(y_hat_mel[0].data.cpu().numpy()), 
+            "slice/mel_gen": utils.plot_spectrogram_to_numpy(y_hat_mel[0].data.cpu().numpy()),
             "all/mel": utils.plot_spectrogram_to_numpy(mel[0].data.cpu().numpy()),
             "all/attn": utils.plot_alignment_to_numpy(attn[0,0].data.cpu().numpy())
         }
         utils.summarize(
           writer=writer,
-          global_step=global_step, 
+          global_step=global_step,
           images=image_dict,
           scalars=scalar_dict)
 
@@ -228,11 +270,11 @@ def train_and_evaluate(rank, epoch, hps, nets, optims, schedulers, scaler, loade
         utils.save_checkpoint(net_g, optim_g, hps.train.learning_rate, epoch, os.path.join(hps.model_dir, "G_{}.pth".format(global_step)))
         utils.save_checkpoint(net_d, optim_d, hps.train.learning_rate, epoch, os.path.join(hps.model_dir, "D_{}.pth".format(global_step)))
     global_step += 1
-  
+
   if rank == 0:
     logger.info('====> Epoch: {}'.format(epoch))
 
- 
+
 def evaluate(hps, generator, eval_loader, writer_eval):
     generator.eval()
     with torch.no_grad():
@@ -255,11 +297,11 @@ def evaluate(hps, generator, eval_loader, writer_eval):
       y_hat_lengths = mask.sum([1,2]).long() * hps.data.hop_length
 
       mel = spec_to_mel_torch(
-        spec, 
-        hps.data.filter_length, 
-        hps.data.n_mel_channels, 
+        spec,
+        hps.data.filter_length,
+        hps.data.n_mel_channels,
         hps.data.sampling_rate,
-        hps.data.mel_fmin, 
+        hps.data.mel_fmin,
         hps.data.mel_fmax)
       y_hat_mel = mel_spectrogram_torch(
         y_hat.squeeze(1).float(),
@@ -283,13 +325,13 @@ def evaluate(hps, generator, eval_loader, writer_eval):
 
     utils.summarize(
       writer=writer_eval,
-      global_step=global_step, 
+      global_step=global_step,
       images=image_dict,
       audios=audio_dict,
       audio_sampling_rate=hps.data.sampling_rate
     )
     generator.train()
 
-                           
+
 if __name__ == "__main__":
   main()

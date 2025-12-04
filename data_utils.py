@@ -58,6 +58,7 @@ class TextAudioLoader(torch.utils.data.Dataset):
     def get_audio_text_pair(self, audiopath_and_text):
         # separate filename and text
         audiopath, text = audiopath_and_text[0], audiopath_and_text[1]
+        print(f"[DBG] transcript 原始文字: {text}")     # 0511 trace
         text = self.get_text(text)
         spec, wav = self.get_audio(audiopath)
         return (text, spec, wav)
@@ -197,6 +198,7 @@ class TextAudioSpeakerLoader(torch.utils.data.Dataset):
             'ZH' : 3,
             'HAK' : 4,
             'TZH' : 5,
+            'JP': 6
         }
 
         # lang_map = {
@@ -207,7 +209,7 @@ class TextAudioSpeakerLoader(torch.utils.data.Dataset):
         lengths = []
         for audiopath, sid, lang, text in self.audiopaths_sid_text:
             if self.min_text_len <= len(text) and len(text) <= self.max_text_len:
-                lang_id = int(lang_map[lang])
+                lang_id = lang
                 audiopaths_sid_text_new.append([audiopath, sid, lang_id, text])
                 lengths.append(os.path.getsize(audiopath) // (2 * self.hop_length))
         self.audiopaths_sid_text = audiopaths_sid_text_new
@@ -224,7 +226,7 @@ class TextAudioSpeakerLoader(torch.utils.data.Dataset):
     def get_audio(self, filename):
         audio, sampling_rate = load_wav_to_torch(filename)
         if sampling_rate != self.sampling_rate:
-            raise ValueError("{} {} SR doesn't match target {} SR".format(
+            raise ValueError("{} SR doesn't match target {} SR".format(
                 sampling_rate, self.sampling_rate))
         audio_norm = audio / self.max_wav_value
         audio_norm = audio_norm.unsqueeze(0)
@@ -248,7 +250,7 @@ class TextAudioSpeakerLoader(torch.utils.data.Dataset):
     
     def get_text(self, text, lang):
         if self.cleaned_text:
-            text_norm = cleaned_text_to_sequence(text)
+            text_norm = cleaned_text_to_sequence(text, lang)
         else:
             text_norm = text_to_sequence(text, self.text_cleaners)
         if self.add_blank:

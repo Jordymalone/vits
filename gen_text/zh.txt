@@ -1,2 +1,4 @@
 zh_01.wav|uo13 j1 iou14 d1 u12 g1 uo12 l1 i14 ch1 eng12 g1 ong11 d1 a14 x1 ve12 。
 zh_02.wav|ch1 en12 x1 ian11 sh1 eng11 ch1 eng12 l1 i14 c1 ii14 d1 eng13 zh1 ong11 x1 ve12 。
+zh_03.wav|uo13 l1 ai12 z1 ii14 t1 ai12 uan11 , n1 i13 h1 ao13 a15 p1 eng12 iou13 , h1 en13 g1 ao11 x1 ing14 r1 en14 sh1 iii12 n1 i13 o11 。
+zh_04.wav|uo13 iao14 q1 v14 m1 ai13 z1 ao13 c1 an11 。
