@@ -107,9 +107,9 @@ class DurationPredictor(nn.Module):
 
     self.drop = nn.Dropout(p_dropout)
     self.conv_1 = nn.Conv1d(in_channels, filter_channels, kernel_size, padding=kernel_size//2)
-    self.norm_1 = modules.LayerNorm(filter_channels)
+    self.norm_1 = modules.ConditionalLayerNorm(filter_channels, gin_channels=gin_channels)
     self.conv_2 = nn.Conv1d(filter_channels, filter_channels, kernel_size, padding=kernel_size//2)
-    self.norm_2 = modules.LayerNorm(filter_channels)
+    self.norm_2 = modules.ConditionalLayerNorm(filter_channels, gin_channels=gin_channels)
     self.proj = nn.Conv1d(filter_channels, 1, 1)
 
     if gin_channels != 0:
@@ -122,11 +122,11 @@ class DurationPredictor(nn.Module):
       x = x + self.cond(g)
     x = self.conv_1(x * x_mask)
     x = torch.relu(x)
-    x = self.norm_1(x)
+    x = self.norm_1(x, g=g)
     x = self.drop(x)
     x = self.conv_2(x * x_mask)
     x = torch.relu(x)
-    x = self.norm_2(x)
+    x = self.norm_2(x, g=g)
     x = self.drop(x)
     x = self.proj(x * x_mask)
     return x * x_mask
@@ -141,7 +141,8 @@ class TextEncoder(nn.Module):
       n_heads,
       n_layers,
       kernel_size,
-      p_dropout):
+      p_dropout,
+      gin_channels=0):
     super().__init__()
     self.n_vocab = n_vocab
     self.out_channels = out_channels
@@ -161,15 +162,16 @@ class TextEncoder(nn.Module):
       n_heads,
       n_layers,
       kernel_size,
-      p_dropout)
+      p_dropout,
+      gin_channels=gin_channels)
     self.proj= nn.Conv1d(hidden_channels, out_channels * 2, 1)
 
-  def forward(self, x, x_lengths):
+  def forward(self, x, x_lengths, g=None):
     x = self.emb(x) * math.sqrt(self.hidden_channels) # [b, t, h]
     x = torch.transpose(x, 1, -1) # [b, h, t]
     x_mask = torch.unsqueeze(commons.sequence_mask(x_lengths, x.size(2)), 1).to(x.dtype)
 
-    x = self.encoder(x * x_mask, x_mask)
+    x = self.encoder(x * x_mask, x_mask, g=g)
     stats = self.proj(x) * x_mask
 
     m, logs = torch.split(stats, self.out_channels, dim=1)
@@ -410,6 +412,7 @@ class SynthesizerTrn(nn.Module):
     upsample_initial_channel,
     upsample_kernel_sizes,
     n_speakers=0,
+    n_emotions=0,   # 新增情緒數量參數
     gin_channels=0,
     use_sdp=True,
     **kwargs):
@@ -432,6 +435,7 @@ class SynthesizerTrn(nn.Module):
     self.upsample_kernel_sizes = upsample_kernel_sizes
     self.segment_size = segment_size
     self.n_speakers = n_speakers
+    self.n_emotions = n_emotions    # 新增儲存變數
     self.gin_channels = gin_channels
 
     self.use_sdp = use_sdp
@@ -455,15 +459,26 @@ class SynthesizerTrn(nn.Module):
 
     if n_speakers > 1:
       self.emb_g = nn.Embedding(n_speakers, gin_channels)
+    if n_emotions > 0:
+      self.emb_e = nn.Embedding(n_emotions, gin_channels)
 
-  def forward(self, x, x_lengths, y, y_lengths, sid=None):
+  def forward(self, x, x_lengths, y, y_lengths, sid=None, eid=None):    # 新增 eid 接口
 
-    x, m_p, logs_p, x_mask = self.enc_p(x, x_lengths)
+    g = None
+
+    # Speaker
     if self.n_speakers > 0:
       g = self.emb_g(sid).unsqueeze(-1) # [b, h, 1]
-    else:
-      g = None
 
+    # 加上 emotion
+    if self.n_emotions > 0 and eid is not None:
+      g_e = self.emb_e(eid).unsqueeze(-1)
+      if g is None:
+        g = g_e         # 如果沒 sid, 那 g 就是情緒
+      else:
+        g = g + g_e     # 向量相加，融合特徵
+
+    x, m_p, logs_p, x_mask = self.enc_p(x, x_lengths, g=g)
     z, m_q, logs_q, y_mask = self.enc_q(y, y_lengths, g=g)
     z_p = self.flow(z, y_mask, g=g)
 
@@ -604,7 +619,8 @@ class SynthesizerTrn(nn.Module):
       # ======================================================================
       # 3. Duration: SDP + DP 混合
       # ======================================================================
-      sdp_ratio = 0.1
+      sdp_ratio = 0.1     ## 1205 測試 sdp effect
+      # sdp_ratio = 0.0
       # logw: [B, 1, T_x]
       logw_sdp = self.sdp(x, x_mask, g=g, reverse=True, noise_scale=noise_scale_w)
       logw_dp  = self.dp(x, x_mask, g=g)

@@ -7,11 +7,11 @@ from torch.nn import functional as F
 
 import commons
 import modules
-from modules import LayerNorm
+from modules import ConditionalLayerNorm
    
 
 class Encoder(nn.Module):
-  def __init__(self, hidden_channels, filter_channels, n_heads, n_layers, kernel_size=1, p_dropout=0., window_size=4, **kwargs):
+  def __init__(self, hidden_channels, filter_channels, n_heads, n_layers, kernel_size=1, p_dropout=0., window_size=4, gin_channels=0, **kwargs):
     super().__init__()
     self.hidden_channels = hidden_channels
     self.filter_channels = filter_channels
@@ -28,27 +28,27 @@ class Encoder(nn.Module):
     self.norm_layers_2 = nn.ModuleList()
     for i in range(self.n_layers):
       self.attn_layers.append(MultiHeadAttention(hidden_channels, hidden_channels, n_heads, p_dropout=p_dropout, window_size=window_size))
-      self.norm_layers_1.append(LayerNorm(hidden_channels))
+      self.norm_layers_1.append(ConditionalLayerNorm(hidden_channels, gin_channels=gin_channels))
       self.ffn_layers.append(FFN(hidden_channels, hidden_channels, filter_channels, kernel_size, p_dropout=p_dropout))
-      self.norm_layers_2.append(LayerNorm(hidden_channels))
+      self.norm_layers_2.append(ConditionalLayerNorm(hidden_channels, gin_channels=gin_channels))
 
-  def forward(self, x, x_mask):
+  def forward(self, x, x_mask, g=None):
     attn_mask = x_mask.unsqueeze(2) * x_mask.unsqueeze(-1)
     x = x * x_mask
     for i in range(self.n_layers):
       y = self.attn_layers[i](x, x, attn_mask)
       y = self.drop(y)
-      x = self.norm_layers_1[i](x + y)
+      x = self.norm_layers_1[i](x + y, g=g)
 
       y = self.ffn_layers[i](x, x_mask)
       y = self.drop(y)
-      x = self.norm_layers_2[i](x + y)
+      x = self.norm_layers_2[i](x + y, g=g)
     x = x * x_mask
     return x
 
 
 class Decoder(nn.Module):
-  def __init__(self, hidden_channels, filter_channels, n_heads, n_layers, kernel_size=1, p_dropout=0., proximal_bias=False, proximal_init=True, **kwargs):
+  def __init__(self, hidden_channels, filter_channels, n_heads, n_layers, kernel_size=1, p_dropout=0., proximal_bias=False, proximal_init=True, gin_channels=0, **kwargs):
     super().__init__()
     self.hidden_channels = hidden_channels
     self.filter_channels = filter_channels
@@ -68,13 +68,13 @@ class Decoder(nn.Module):
     self.norm_layers_2 = nn.ModuleList()
     for i in range(self.n_layers):
       self.self_attn_layers.append(MultiHeadAttention(hidden_channels, hidden_channels, n_heads, p_dropout=p_dropout, proximal_bias=proximal_bias, proximal_init=proximal_init))
-      self.norm_layers_0.append(LayerNorm(hidden_channels))
+      self.norm_layers_0.append(ConditionalLayerNorm(hidden_channels, gin_channels=gin_channels))
       self.encdec_attn_layers.append(MultiHeadAttention(hidden_channels, hidden_channels, n_heads, p_dropout=p_dropout))
-      self.norm_layers_1.append(LayerNorm(hidden_channels))
+      self.norm_layers_1.append(ConditionalLayerNorm(hidden_channels, gin_channels=gin_channels))
       self.ffn_layers.append(FFN(hidden_channels, hidden_channels, filter_channels, kernel_size, p_dropout=p_dropout, causal=True))
-      self.norm_layers_2.append(LayerNorm(hidden_channels))
+      self.norm_layers_2.append(ConditionalLayerNorm(hidden_channels, gin_channels=gin_channels))
 
-  def forward(self, x, x_mask, h, h_mask):
+  def forward(self, x, x_mask, h, h_mask, g=None):
     """
     x: decoder input
     h: encoder output
@@ -85,15 +85,15 @@ class Decoder(nn.Module):
     for i in range(self.n_layers):
       y = self.self_attn_layers[i](x, x, self_attn_mask)
       y = self.drop(y)
-      x = self.norm_layers_0[i](x + y)
+      x = self.norm_layers_0[i](x + y, g=g)
 
       y = self.encdec_attn_layers[i](x, h, encdec_attn_mask)
       y = self.drop(y)
-      x = self.norm_layers_1[i](x + y)
+      x = self.norm_layers_1[i](x + y, g=g)
       
       y = self.ffn_layers[i](x, x_mask)
       y = self.drop(y)
-      x = self.norm_layers_2[i](x + y)
+      x = self.norm_layers_2[i](x + y, g=g)
     x = x * x_mask
     return x
 

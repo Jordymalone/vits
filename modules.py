@@ -31,7 +31,49 @@ class LayerNorm(nn.Module):
     x = F.layer_norm(x, (self.channels,), self.gamma, self.beta, self.eps)
     return x.transpose(1, -1)
 
- 
+class ConditionalLayerNorm(nn.Module):
+  def __init__(self, channels, gin_channels=0, eps=1e-5):
+    super().__init__()
+    self.channels = channels
+    self.eps = eps
+    self.gin_channels = gin_channels
+
+    # 原本 LayerNorm 的參數 (可訓練)
+    self.gamma = nn.Parameter(torch.ones(channels))
+    self.beta = nn.Parameter(torch.zeros(channels))
+
+    # [關鍵] 如果有提供 conditioning channels，就建立投影層
+    if gin_channels != 0:
+        # 輸出 2 * channels 是因為要同時預測 Scale (gamma) 和 Bias (beta)
+        self.cond_layer = nn.Conv1d(gin_channels, 2 * channels, 1)
+        # 初始化為 0，確保剛開始訓練時效果等同於普通 LayerNorm，不會讓模型崩潰
+        self.cond_layer.weight.data.zero_()
+        self.cond_layer.bias.data.zero_()
+
+  def forward(self, x, g=None):
+    # x: [Batch, Channels, Time]
+    # g: [Batch, Gin_Channels, 1]
+
+    # 1. 計算標準化 (Standardization)
+    # VITS 的 Tensor 是 (B, C, T)，所以對 dim=1 做處理可能比較麻煩，
+    # 這裡沿用 modules.py 原本 LayerNorm 的寫法 (transpose)
+    x = x.transpose(1, -1)
+    x_norm = F.layer_norm(x, (self.channels,), self.gamma, self.beta, self.eps)
+    x_norm = x_norm.transpose(1, -1)
+
+    # 2. 如果沒有給 g，或者沒設定 gin_channels，就直接回傳 (退化成普通 LayerNorm)
+    if g is None or self.gin_channels == 0:
+        return x_norm
+
+    # 3. 計算基於情緒的 Scale 和 Bias
+    g_out = self.cond_layer(g) # [B, 2*C, 1]
+    gamma_c, beta_c = torch.split(g_out, self.channels, dim=1)
+
+    # 4. 應用情緒控制
+    # 公式: result * (1 + gamma_c) + beta_c
+    # 這裡我們讓 gamma_c 作為偏移量疊加在原參數上
+    return x_norm * (1 + gamma_c) + beta_c
+
 class ConvReluNorm(nn.Module):
   def __init__(self, in_channels, hidden_channels, out_channels, kernel_size, n_layers, p_dropout):
     super().__init__()
