@@ -569,8 +569,8 @@ class SynthesizerTrn(nn.Module):
       # ======================================================================
       # 0. 固定 noise 參數（你原來的寫法）
       # ======================================================================
-      noise_scale = 0.6
-      noise_scale_w = 0.2
+      # noise_scale = 0.6
+      # noise_scale_w = 0.2
 
       # ======================================================================
       # 1. Text encoder
@@ -604,19 +604,36 @@ class SynthesizerTrn(nn.Module):
       # ======================================================================
       # 3. Duration: SDP + DP 混合
       # ======================================================================
+      # sdp_ratio = 1.0     # test for 單音節 problem --> 100% Deterministic (DDP)
       sdp_ratio = 0.1
       # logw: [B, 1, T_x]
       logw_sdp = self.sdp(x, x_mask, g=g, reverse=True, noise_scale=noise_scale_w)
       logw_dp  = self.dp(x, x_mask, g=g)
       logw = logw_sdp * sdp_ratio + logw_dp * (1 - sdp_ratio)
 
+      # ================= 👇 請插入這段 LOGGING BLOCK 👇 =================
+      if True: # 包在 if True 方便日後一鍵關閉
+          print(f"\n{'='*20} Inference Status {'='*20}")
+          print(f" [Config] Mode      : {'PURE DDP (Stable)' if sdp_ratio == 0 else 'Hybrid / SDP'}")
+          print(f" [Config] Ratio     : sdp_ratio={sdp_ratio} (0.0 = Fully Deterministic)")
+          print(f" [Params] Noise     : scale={noise_scale} (Audio), scale_w={noise_scale_w} (Duration)")
+          
+          # 計算總幀數 (Frames) 來對比兩者差異
+          dur_sdp = torch.sum(torch.ceil(torch.exp(logw_sdp) * x_mask * length_scale)).item()
+          dur_ddp = torch.sum(torch.ceil(torch.exp(logw_dp) * x_mask * length_scale)).item()
+          dur_final = torch.sum(torch.ceil(torch.exp(logw) * x_mask * length_scale)).item()
+          
+          print(f" [Result] Duration  : SDP(隨機)={dur_sdp:.0f} vs DDP(固定)={dur_ddp:.0f} -> Final={dur_final:.0f} frames")
+          print(f"{'='*58}")
+      # ================= 👆 插入結束 👆 =================
+
       # ---- DEBUG: logw 結果 ------------------------------------------------
       # log-duration（還沒 exp 前）
-      print("[DEBUG] logw (from SDP + DP):")
-      print("        logw.shape   :", logw.shape)
+      # print("[DEBUG] logw (from SDP + DP):")
+      # print("        logw.shape   :", logw.shape)
       # 只印第一個 sample，避免太肥
       logw_0 = logw[0, 0].detach().cpu()
-      print("        logw[0, 0, :]:", logw_0)
+      # print("        logw[0, 0, :]:", logw_0)
 
       # w: 連續 duration（frame 數，尚未取整），shape = [B, 1, T_x]
       w = torch.exp(logw) * x_mask * length_scale
