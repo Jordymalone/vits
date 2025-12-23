@@ -254,6 +254,97 @@ class MultiHeadAttention(nn.Module):
     return torch.unsqueeze(torch.unsqueeze(-torch.log1p(torch.abs(diff)), 0), 0)
 
 
+class CrossConditionalAttention(nn.Module):
+  """
+  Cross Conditional Attention (CCA) for emotion conditioning
+  Based on EmoSpeech paper
+  """
+  def __init__(self, channels, cond_channels, n_heads=4, p_dropout=0.):
+    super().__init__()
+    assert channels % n_heads == 0
+
+    self.channels = channels
+    self.cond_channels = cond_channels
+    self.n_heads = n_heads
+    self.k_channels = channels // n_heads
+    self.p_dropout = p_dropout
+
+    # Query from main feature
+    self.conv_q = nn.Conv1d(channels, channels, 1)
+    # Key and Value from conditioning feature (emotion/eGeMAPS)
+    self.conv_k = nn.Conv1d(cond_channels, channels, 1)
+    self.conv_v = nn.Conv1d(cond_channels, channels, 1)
+    # Output projection
+    self.conv_o = nn.Conv1d(channels, channels, 1)
+
+    self.drop = nn.Dropout(p_dropout)
+    self.attn = None
+
+    nn.init.xavier_uniform_(self.conv_q.weight)
+    nn.init.xavier_uniform_(self.conv_k.weight)
+    nn.init.xavier_uniform_(self.conv_v.weight)
+    nn.init.xavier_uniform_(self.conv_o.weight)
+
+  def forward(self, x, cond, x_mask=None, cond_mask=None):
+    """
+    Args:
+      x: [B, C, T] - main feature (e.g., text encoding)
+      cond: [B, C_cond, T_cond] - conditioning feature (e.g., emotion/eGeMAPS)
+      x_mask: [B, 1, T] - mask for x
+      cond_mask: [B, 1, T_cond] - mask for cond
+    Returns:
+      output: [B, C, T] - attended feature
+    """
+    # Generate Q, K, V
+    q = self.conv_q(x)  # [B, C, T]
+    k = self.conv_k(cond)  # [B, C, T_cond]
+    v = self.conv_v(cond)  # [B, C, T_cond]
+
+    # Apply attention
+    output, self.attn = self.attention(q, k, v, x_mask, cond_mask)
+
+    # Output projection
+    output = self.conv_o(output)
+
+    if x_mask is not None:
+      output = output * x_mask
+
+    return output
+
+  def attention(self, query, key, value, query_mask=None, key_mask=None):
+    """
+    Multi-head cross attention between query and key/value
+    """
+    b, d, t_q = query.size()
+    t_k = key.size(2)
+
+    # Reshape to [B, n_heads, T, d_k]
+    query = query.view(b, self.n_heads, self.k_channels, t_q).transpose(2, 3)
+    key = key.view(b, self.n_heads, self.k_channels, t_k).transpose(2, 3)
+    value = value.view(b, self.n_heads, self.k_channels, t_k).transpose(2, 3)
+
+    # Attention scores: [B, n_heads, T_q, T_k]
+    scores = torch.matmul(query / math.sqrt(self.k_channels), key.transpose(-2, -1))
+
+    # Apply mask if provided
+    if query_mask is not None and key_mask is not None:
+      # attn_mask: [B, 1, T_q, T_k]
+      attn_mask = query_mask.unsqueeze(-1) * key_mask.unsqueeze(2)
+      scores = scores.masked_fill(attn_mask == 0, -1e4)
+
+    # Softmax over key dimension
+    p_attn = F.softmax(scores, dim=-1)  # [B, n_heads, T_q, T_k]
+    p_attn = self.drop(p_attn)
+
+    # Apply attention to values
+    output = torch.matmul(p_attn, value)  # [B, n_heads, T_q, d_k]
+
+    # Reshape back to [B, C, T_q]
+    output = output.transpose(2, 3).contiguous().view(b, d, t_q)
+
+    return output, p_attn
+
+
 class FFN(nn.Module):
   def __init__(self, in_channels, out_channels, filter_channels, kernel_size, p_dropout=0., activation=None, causal=False):
     super().__init__()

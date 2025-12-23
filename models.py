@@ -12,6 +12,8 @@ import monotonic_align
 from torch.nn import Conv1d, ConvTranspose1d, AvgPool1d, Conv2d
 from torch.nn.utils import weight_norm, remove_weight_norm, spectral_norm
 from commons import init_weights, get_padding
+from attentions import CrossConditionalAttention
+from egemaps_extractor import eGeMAPS_Extractor, eGeMAPS_Encoder
 
 
 class StochasticDurationPredictor(nn.Module):
@@ -142,7 +144,9 @@ class TextEncoder(nn.Module):
       n_layers,
       kernel_size,
       p_dropout,
-      gin_channels=0):
+      gin_channels=0,
+      use_cca=False,
+      emo_channels=0):
     super().__init__()
     self.n_vocab = n_vocab
     self.out_channels = out_channels
@@ -152,6 +156,7 @@ class TextEncoder(nn.Module):
     self.n_layers = n_layers
     self.kernel_size = kernel_size
     self.p_dropout = p_dropout
+    self.use_cca = use_cca
 
     self.emb = nn.Embedding(n_vocab, hidden_channels)
     nn.init.normal_(self.emb.weight, 0.0, hidden_channels**-0.5)
@@ -164,14 +169,32 @@ class TextEncoder(nn.Module):
       kernel_size,
       p_dropout,
       gin_channels=gin_channels)
+
+    # Cross Conditional Attention for emotion conditioning
+    if use_cca and emo_channels > 0:
+      self.cca = CrossConditionalAttention(
+        channels=hidden_channels,
+        cond_channels=emo_channels,
+        n_heads=n_heads,
+        p_dropout=p_dropout
+      )
+      self.cca_norm = modules.LayerNorm(hidden_channels)
+
     self.proj= nn.Conv1d(hidden_channels, out_channels * 2, 1)
 
-  def forward(self, x, x_lengths, g=None):
+  def forward(self, x, x_lengths, g=None, emo_feat=None, emo_mask=None):
     x = self.emb(x) * math.sqrt(self.hidden_channels) # [b, t, h]
     x = torch.transpose(x, 1, -1) # [b, h, t]
     x_mask = torch.unsqueeze(commons.sequence_mask(x_lengths, x.size(2)), 1).to(x.dtype)
 
     x = self.encoder(x * x_mask, x_mask, g=g)
+
+    # Apply CCA if emotion features are provided
+    if self.use_cca and emo_feat is not None:
+      residual = x
+      x_cca = self.cca(x, emo_feat, x_mask=x_mask, cond_mask=emo_mask)
+      x = self.cca_norm(residual + x_cca)
+
     stats = self.proj(x) * x_mask
 
     m, logs = torch.split(stats, self.out_channels, dim=1)
@@ -415,6 +438,10 @@ class SynthesizerTrn(nn.Module):
     n_emotions=0,   # 新增情緒數量參數
     gin_channels=0,
     use_sdp=True,
+    use_cca=False,  # 是否使用 CCA
+    use_egemaps=False,  # 是否使用 eGeMAPS
+    emo_feature_dim=88,  # eGeMAPS feature dimension
+    sample_rate=22050,
     **kwargs):
 
     super().__init__()
@@ -437,8 +464,25 @@ class SynthesizerTrn(nn.Module):
     self.n_speakers = n_speakers
     self.n_emotions = n_emotions    # 新增儲存變數
     self.gin_channels = gin_channels
+    self.use_cca = use_cca
+    self.use_egemaps = use_egemaps
 
     self.use_sdp = use_sdp
+
+    # eGeMAPS feature extractor and encoder
+    if use_egemaps:
+      self.egemaps_extractor = eGeMAPS_Extractor(
+        sample_rate=sample_rate,
+        feature_dim=emo_feature_dim
+      )
+      self.egemaps_encoder = eGeMAPS_Encoder(
+        feature_dim=emo_feature_dim,
+        hidden_channels=hidden_channels,
+        out_channels=hidden_channels
+      )
+      emo_channels = hidden_channels
+    else:
+      emo_channels = 0
 
     self.enc_p = TextEncoder(n_vocab,
         inter_channels,
@@ -447,7 +491,10 @@ class SynthesizerTrn(nn.Module):
         n_heads,
         n_layers,
         kernel_size,
-        p_dropout)
+        p_dropout,
+        gin_channels=gin_channels,
+        use_cca=use_cca,
+        emo_channels=emo_channels)
     self.dec = Generator(inter_channels, resblock, resblock_kernel_sizes, resblock_dilation_sizes, upsample_rates, upsample_initial_channel, upsample_kernel_sizes, gin_channels=gin_channels)
     self.enc_q = PosteriorEncoder(spec_channels, inter_channels, hidden_channels, 5, 1, 16, gin_channels=gin_channels)
     self.flow = ResidualCouplingBlock(inter_channels, hidden_channels, 5, 1, 4, gin_channels=gin_channels)
@@ -462,7 +509,17 @@ class SynthesizerTrn(nn.Module):
     if n_emotions > 0:
       self.emb_e = nn.Embedding(n_emotions, gin_channels)
 
-  def forward(self, x, x_lengths, y, y_lengths, sid=None, eid=None):    # 新增 eid 接口
+  def forward(self, x, x_lengths, y, y_lengths, sid=None, eid=None, ref_audio=None):
+    """
+    Args:
+      x: [B, T_text] text input
+      x_lengths: [B] text lengths
+      y: [B, n_mels, T_audio] mel-spectrogram
+      y_lengths: [B] audio lengths
+      sid: [B] speaker IDs (optional)
+      eid: [B] emotion IDs (optional)
+      ref_audio: [B, T_wav] reference audio for eGeMAPS extraction (optional)
+    """
 
     g = None
 
@@ -478,7 +535,21 @@ class SynthesizerTrn(nn.Module):
       else:
         g = g + g_e     # 向量相加，融合特徵
 
-    x, m_p, logs_p, x_mask = self.enc_p(x, x_lengths, g=g)
+    # Extract eGeMAPS features if reference audio is provided
+    emo_feat = None
+    emo_mask = None
+    if self.use_egemaps and ref_audio is not None:
+      # Extract eGeMAPS features from reference audio
+      with torch.no_grad():
+        egemaps_feat = self.egemaps_extractor(ref_audio)  # [B, feature_dim, T_feat]
+      # Encode eGeMAPS features
+      emo_feat = self.egemaps_encoder(egemaps_feat)  # [B, hidden_channels, T_feat]
+      # Create mask for emotion features
+      emo_lengths = torch.ones(emo_feat.size(0), dtype=torch.long, device=emo_feat.device) * emo_feat.size(2)
+      emo_mask = torch.unsqueeze(commons.sequence_mask(emo_lengths, emo_feat.size(2)), 1).to(emo_feat.dtype)
+
+    # Text encoder with optional CCA
+    x, m_p, logs_p, x_mask = self.enc_p(x, x_lengths, g=g, emo_feat=emo_feat, emo_mask=emo_mask)
     z, m_q, logs_q, y_mask = self.enc_q(y, y_lengths, g=g)
     z_p = self.flow(z, y_mask, g=g)
 
@@ -576,11 +647,27 @@ class SynthesizerTrn(nn.Module):
       x,
       x_lengths,
       sid=None,
+      eid=None,
+      ref_audio=None,
       noise_scale=1,
       length_scale=1,
       noise_scale_w=1.,
       max_len=None
   ):
+      """
+      Inference with optional emotion conditioning
+
+      Args:
+        x: [B, T_text] text input
+        x_lengths: [B] text lengths
+        sid: [B] speaker IDs (optional)
+        eid: [B] emotion IDs (optional)
+        ref_audio: [B, T_wav] reference audio for eGeMAPS extraction (optional)
+        noise_scale: float
+        length_scale: float
+        noise_scale_w: float
+        max_len: int or None
+      """
       # ======================================================================
       # 0. 固定 noise 參數（你原來的寫法）
       # ======================================================================
@@ -588,9 +675,24 @@ class SynthesizerTrn(nn.Module):
       noise_scale_w = 0.2
 
       # ======================================================================
+      # 0.5 Extract eGeMAPS features if reference audio is provided
+      # ======================================================================
+      emo_feat = None
+      emo_mask = None
+      if self.use_egemaps and ref_audio is not None:
+        # Extract eGeMAPS features from reference audio
+        with torch.no_grad():
+          egemaps_feat = self.egemaps_extractor(ref_audio)  # [B, feature_dim, T_feat]
+        # Encode eGeMAPS features
+        emo_feat = self.egemaps_encoder(egemaps_feat)  # [B, hidden_channels, T_feat]
+        # Create mask for emotion features
+        emo_lengths = torch.ones(emo_feat.size(0), dtype=torch.long, device=emo_feat.device) * emo_feat.size(2)
+        emo_mask = torch.unsqueeze(commons.sequence_mask(emo_lengths, emo_feat.size(2)), 1).to(emo_feat.dtype)
+
+      # ======================================================================
       # 1. Text encoder
       # ======================================================================
-      x, m_p, logs_p, x_mask = self.enc_p(x, x_lengths)
+      x, m_p, logs_p, x_mask = self.enc_p(x, x_lengths, emo_feat=emo_feat, emo_mask=emo_mask)
       # x:      [B, T_x, H]
       # m_p:    [B, T_x, H]
       # logs_p: [B, T_x, H]
@@ -609,12 +711,19 @@ class SynthesizerTrn(nn.Module):
       print("        text lengths from x_mask:", text_lengths_from_mask.detach().cpu())
 
       # ======================================================================
-      # 2. Speaker embedding
+      # 2. Speaker and Emotion embedding
       # ======================================================================
+      g = None
       if self.n_speakers > 0:
           g = self.emb_g(sid).unsqueeze(-1)  # [B, H, 1]
-      else:
-          g = None
+
+      # Add emotion embedding if provided
+      if self.n_emotions > 0 and eid is not None:
+          g_e = self.emb_e(eid).unsqueeze(-1)
+          if g is None:
+              g = g_e
+          else:
+              g = g + g_e
 
       # ======================================================================
       # 3. Duration: SDP + DP 混合

@@ -58,3 +58,12 @@ Error: Symbol not found! Original phoneme string: "ts2 oo23 th2 ai23 tsh2 oong25
 Line 415: 415.wav|n2 a23 h2 e23 an22 gn2 ioong25 s2 irn24 tsch2 iu23 h2 e23 tsch2 in23 tsh2 ung23 ieu23
 Error: Symbol not found! Original phoneme string: "n2 a23 h2 e23 an22 gn2 ioong25 s2 irn24 tsch2 iu23 h2 e23 tsch2 in23 tsh2 ung23 ieu23", problematic segment: "irn24" not found in symbol_to_id map.
 
+Line 99: 先生.wav|sc3 ing38 s3 ang38
+Error: Symbol not found! Original phoneme string: "sc3 ing38 s3 ang38", problematic segment: "ing38" not found in symbol_to_id map.
+
+Line 99: 先生.wav|sc3 ing38 s3 ang38
+Error: Symbol not found! Original phoneme string: "sc3 ing38 s3 ang38", problematic segment: "ing38" not found in symbol_to_id map.
+
+Line 99: 先生.wav|sc3 ing38 s3 ang38
+Error: Symbol not found! Original phoneme string: "sc3 ing38 s3 ang38", problematic segment: "ing38" not found in symbol_to_id map.
+

@@ -28,14 +28,15 @@ def load_speaker_dict():
     # with open(f'/home/p76131482/Linux_DATA/model/vits/filelists/double_phoneme_zh_tw/mixed_5_id.txt', 'r') as f:
     # with open(f'/home/p76131482/Linux_DATA/model/vits/filelists/3646_vad_25_920/mixed_5_id.txt', 'r') as f:
     # with open(f'/home/p76131482/Linux_DATA/model/vits/filelists/Hakka_hm/mixed_5_id.txt', 'r') as f:
+    with open(f'/home/p76131482/Linux_DATA/model/vits/filelists/Hakka_hf/mixed_5_id.txt', 'r') as f:
     # with open(f'/home/p76131482/Linux_DATA/model/vits/filelists/hakka_wo_hac/mixed_5_id.txt', 'r') as f:
-    with open(f'/home/p76131482/Linux_DATA/model/vits/filelists/Hakka_xm/mixed_5_id.txt', 'r') as f:
+    # with open(f'/home/p76131482/Linux_DATA/model/vits/filelists/Hakka_xm/mixed_5_id.txt', 'r') as f:
     # with open(f'/home/p76131482/Linux_DATA/model/vits/filelists/hakka_six_segment_4096/mixed_5_id.txt', 'r') as f:
-    # with open(f'/home/p76131482/Linux_DATA/model/vits/filelists/Hakka_hf/mixed_5_id.txt', 'r') as f:
     # with open(f'/home/p76131482/Linux_DATA/model/vits/filelists/hakka_six_v1/mixed_5_id.txt', 'r') as f:
     # with open(f'/home/p76131482/Linux_DATA/model/vits/filelists/phonetic_test_zh/mixed_5_id.txt', 'r') as f:
     # with open(f'/home/p76131482/Linux_DATA/model/vits/filelists/tw_1115_doublevVowel/mixed_5_id.txt', 'r') as f:
     # with open(f'/home/p76131482/Linux_DATA/model/vits/filelists/tw_1220_kaldi_300_noise/mixed_5_id.txt', 'r') as f:
+    # with open(f'/home/p76131482/Linux_DATA/model/vits/filelists/finetune_tw_1220_kaldi_300_noise/mixed_5_id.txt', 'r') as f:
     # with open(f'/home/p76131482/Linux_DATA/model/vits/filelists/retraintw/mixed_5_id.txt', 'r') as f:
 
         for line in f.readlines():
@@ -67,9 +68,9 @@ def get_text(text, langauge):
 # hps = utils.get_hparams_from_file("logs/3646_vad_25_920/config.json")
 # hps = utils.get_hparams_from_file("logs/hakka_six_v1/config.json")
 # hps = utils.get_hparams_from_file("logs/Hakka_single_xf/config.json")
-hps = utils.get_hparams_from_file("logs/Hakka_single_xm/config.json")
+# hps = utils.get_hparams_from_file("logs/Hakka_single_xm/config.json")
 # hps = utils.get_hparams_from_file("logs/hakka_hm_model/config.json")
-# hps = utils.get_hparams_from_file("logs/hakka_hf_model/config.json")
+hps = utils.get_hparams_from_file("logs/hakka_hf_model/config.json")
 # hps = utils.get_hparams_from_file("logs/hakka_wo_hac/config.json")
 # hps = utils.get_hparams_from_file("logs/tw_1220_kaldi_300_noise/config.json")
 # hps = utils.get_hparams_from_file("logs/hakka_six_segment_4096/config.json")
@@ -106,10 +107,11 @@ def get_symbols():
     # with open(f'filelists/3646_vad_25_920/lang_phones.txt','r',encoding='utf-8') as f:
     # with open(f'filelists/hakka_six_v1/lang_phones.txt','r',encoding='utf-8') as f:
     # with open(f'filelists/Hakka_hm/lang_phones.txt','r',encoding='utf-8') as f:
-    # with open(f'filelists/Hakka_hf/lang_phones.txt','r',encoding='utf-8') as f:
+    with open(f'filelists/Hakka_hf/lang_phones.txt','r',encoding='utf-8') as f:
     # with open(f'filelists/hakka_wo_hac/lang_phones.txt','r',encoding='utf-8') as f:
-    with open(f'filelists/Hakka_xm/lang_phones.txt','r',encoding='utf-8') as f:
+    # with open(f'filelists/Hakka_xm/lang_phones.txt','r',encoding='utf-8') as f:
     # with open(f'filelists/tw_1220_kaldi_300_noise/lang_phones.txt','r',encoding='utf-8') as f:
+    # with open(f'filelists/finetune_tw_1220_kaldi_300_noise/lang_phones.txt','r',encoding='utf-8') as f:
     # with open(f'filelists/hakka_six_segment_4096/lang_phones.txt','r',encoding='utf-8') as f:
     # with open(f'filelists/phonetic_test_zh/lang_phones.txt','r',encoding='utf-8') as f:
 
@@ -140,16 +142,18 @@ _ = net_g.eval()
 # 新en 用 607000
 # use_g_pth_file = 'G_696000' # retraintw
 # use_g_pth_file = 'G_159000' # Hakka_single_xf
-use_g_pth_file = 'G_305000' # Hakka_single_xm
-# use_g_pth_file = 'G_519000' # Hakka_hf
+# use_g_pth_file = 'G_305000' # Hakka_single_xm
 # use_g_pth_file = 'G_350000' # retrain 3834_5_vad
 # use_g_pth_file = 'G_253000' # Hakka_hm
 # use_g_pth_file = 'G_300000' # hakka_wo_hac
 # use_g_pth_file = 'G_200000' # finetune_tw_1220_kaldi_300_noise
+# use_g_pth_file = 'G_78000' # finetune_tw_1220_kaldi_300_noise
+# use_g_pth_file = 'G_150000' # finetune_tw_1220_kaldi_300_noise_v2
 # use_g_pth_file = 'G_120000' # hakka_six_segment_4096
 # use_g_pth_file = 'G_344000' # hakka_six_v1
 # use_g_pth_file = 'G_480000' # 3646_vad_25_920
 # use_g_pth_file = 'G_253000' # hakka_hm_model
+use_g_pth_file = 'G_519000'   # hakka_hf_model
 # use_g_pth_file = 'G_90000' # phonetic_test_zh
 # use_g_pth_file = 'G_192000' # 0512_vad_test
 # use_g_pth_file = 'G_286000' # tw_1220_kaldi_300_noise
@@ -160,11 +164,12 @@ use_g_pth_file = 'G_305000' # Hakka_single_xm
 # _ = utils.load_checkpoint(f"logs/3646_vad_25_920/{use_g_pth_file}.pth", net_g, None)
 # _ = utils.load_checkpoint(f"logs/hakka_six_segment_4096/{use_g_pth_file}.pth", net_g, None)
 # _ = utils.load_checkpoint(f"logs/hakka_wo_hac/{use_g_pth_file}.pth", net_g, None)
-_ = utils.load_checkpoint(f"logs/Hakka_single_xm/{use_g_pth_file}.pth", net_g, None)
+# _ = utils.load_checkpoint(f"logs/Hakka_single_xm/{use_g_pth_file}.pth", net_g, None)
 # _ = utils.load_checkpoint(f"logs/finetune_tw_1220_kaldi_300_noise/{use_g_pth_file}.pth", net_g, None)
+# _ = utils.load_checkpoint(f"logs/finetune_tw_1220_kaldi_300_noise_v2/{use_g_pth_file}.pth", net_g, None)
 # _ = utils.load_checkpoint(f"logs/tw_1220_kaldi_300_noise/{use_g_pth_file}.pth", net_g, None)
 # _ = utils.load_checkpoint(f"logs/hakka_hm_model/{use_g_pth_file}.pth", net_g, None)
-# _ = utils.load_checkpoint(f"logs/hakka_hf_model/{use_g_pth_file}.pth", net_g, None)
+_ = utils.load_checkpoint(f"logs/hakka_hf_model/{use_g_pth_file}.pth", net_g, None)
 
 
 def save_attn_txt(attn_tensor, save_path):
@@ -486,28 +491,28 @@ def read_kasih_dir(kasih_path):
 
 if __name__ == '__main__':
     import argparse, sys
+    # # python3 infer.py --gen_text_lang <lang> --sids 0 1...
+    # parser = argparse.ArgumentParser()
+    # parser.add_argument("--text", default="kh0 o02 s0 e03")
+    # parser.add_argument("--sid", type=int, default=55)
+    # parser.add_argument("--lang", default='TW')
+    # parser.add_argument("--en", action="store_true")
+    # parser.add_argument("--sids", type=int, nargs='+')
+    # parser.add_argument("--gen_text_lang", type=str)  # e.g., tw
+    # args = parser.parse_args()
 
-#   parser = argparse.ArgumentParser()
-#   parser.add_argument("--text", default="kh0 o02 s0 e03")
-#   parser.add_argument("--sid", type=int, default=55)
-#   parser.add_argument("--lang", default='TW')
-#   parser.add_argument("--en", action="store_true")
-#   parser.add_argument("--sids", type=int, nargs='+')
-#   parser.add_argument("--gen_text_lang", type=str)  # e.g., tw
-#   args = parser.parse_args()
+    # # 批次：直接呼叫你原本的 synthesis_file
+    # if args.gen_text_lang:
+    #     lang = args.gen_text_lang.lower()   # 關鍵：傳入小寫以匹配 dict 與檔名
+    #     ids = args.sids if args.sids else [args.sid]
+    #     for sid in ids:
+    #         synthesis_file(language=lang, speaker_id=sid, net_g=net_g)
+    #     sys.exit(0)
 
-#   # 批次：直接呼叫你原本的 synthesis_file
-#   if args.gen_text_lang:
-#       lang = args.gen_text_lang.lower()   # 關鍵：傳入小寫以匹配 dict 與檔名
-#       ids = args.sids if args.sids else [args.sid]
-#       for sid in ids:
-#           synthesis_file(language=lang, speaker_id=sid, net_g=net_g)
-#       sys.exit(0)
-
-#   # 單句，支援多 speaker
-#   ids = args.sids if args.sids else [args.sid]
-#   for sid in ids:
-#       synthesis(args.text, sid, sid, f"default_{sid}.wav", args.en, args.lang)
+    # # 單句，支援多 speaker
+    # ids = args.sids if args.sids else [args.sid]
+    # for sid in ids:
+    #     synthesis(args.text, sid, sid, f"default_{sid}.wav", args.en, args.lang)
 
 
 
@@ -526,7 +531,17 @@ if __name__ == '__main__':
     text = "oo21 l2 i23 t2 u22 iu21 s2 ir25 v2 ooi23 oo21 sc2 ia23 p2 a21 iu21 s2 ir25 v2 ooi23 oo21 s2 ui22 sc2 ia23"
     text = "sil iu21 k2 ook24 ioong23"
     text = "th2 ai23 iook24 sil iu21"
-    text = "m2 e23 h2 e23 it24 p2 au21 p2 au21 e22 t2 u23 ts2 oong21 t2 oo23 ts2 at28 p2 uk24 s2 irt28 l2 ook28"
+    text = "ioong25 th2 ooi25"
+    text = "ia22 h2 a23 sc2 ien21 s2 irt28 iook28 ph2 ien22 l2 au21 l2 im21 ts2 ir22 tsh2 uk28 iook28 s2 ui22"
+    text = "t2 i23 gn2 ia21 k2 e23 iu23 s2 u22 ph2 ien22 tsch2 iu23 h2 e23 f2 u23 l2 i21 ts2 am23"
+    text = "l2 ia22 ph2 ien23"
+    text = "an22 ts2 oo22 tsch2 i21"
+    text = "sil iook28 ph2 ien23 sil"
+    text = "sil kh2 ien23 p2 oo22 kh2 a22 sil"
+    text = "sil ioong25 th2 ooi25 sil"
+    text = "an22 ts2 oo22 tsch2 i21"
+    text = "th3 eu33 tsch3 ien33 v3 at38 tsr3 oon31 tsr3 in35 ph3 ien31 tsch3 iu33 t3 oo35 th3 ooi33 p3 et38 sr3 i33 tsr3 in35 f3 u31 l3 e38 sil"
+    # text = "ng2 ai25 h2 e23 l2 u25 v2 un25 sc2 ioong25 sc2 in21 s2 ang21"   # 我是盧文祥老師
     # text = "ts0 oong03 th0 ai03 dl0 oong01 iau02 k0 o02 ph0 ieen07 h0 ioong03"
     # # text = "k2 im21 p2 u21 gn2 it24 th2 ien21 h2 i23" # 今天天氣
     # # text = "k3 im38 p3 u38 gn3 it38 th3 ien38 h3 i35"
@@ -554,10 +569,13 @@ if __name__ == '__main__':
     result = text
     print(result)
     # synthesis("p4 uoo41", int(args.sid), int(args.sid), "波.wav", False, "TZH")
-    # synthesis("kh0 o02 s0 e03", int(args.sid), int(args.sid), "khò-sè.wav", False, "TW")
-    # synthesis("s0 ng02 p0 uann05", int(args.sid), int(args.sid), "正常句子.wav", False, "TW")
+    # synthesis("sil p2 uk24 n2 ui23 sil", int(args.sid), int(args.sid), "內臟.wav", False, "TW")
+    synthesis(result, int(args.sid), int(args.sid), "test1.wav", False, "HAK")
     # 1111 到這邊
-    synthesis(result, int(args.sid), int(args.sid), "xmd1108-239test1.wav", False, "HAK")
+
+
+    # synthesis(result, int(args.sid), int(args.sid), "sil藥房sil_sdp0_0.wav", False, "HAK")
+    # synthesis(result, int(args.sid), int(args.sid), "ss陽檯0_1.wav", False, "HAK")
     #synthesis(result, int(args.sid), int(args.sid), "91.wav", False, "HAK")
     # synthesis("n4 i43 h4 au43", int(args.sid), int(args.sid), "n4_i43_h4_au43.wav", False, "TZH")
     # synthesis(english_cleaners2("What's the weather today?"), int(args.sid), int(args.sid), "今天天氣怎麼樣.wav", False, "EN")
