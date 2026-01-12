@@ -51,7 +51,7 @@ _sym = []
 # with open(f'filelists/phonetic_test_zh/lang_phones.txt','r',encoding='utf-8') as f:
 # with open(f'filelists/3646_vad_25_920/lang_phones.txt','r',encoding='utf-8') as f:
 # with open(f'filelists/Hakka_xf/lang_phones.txt','r',encoding='utf-8') as f:
-with open(f'filelists/Hakka_xm/lang_phones.txt','r',encoding='utf-8') as f:
+# with open(f'filelists/Hakka_xm/lang_phones.txt','r',encoding='utf-8') as f:
 # with open(f'filelists/hakka_six_v1/lang_phones.txt','r',encoding='utf-8') as f:
 # with open(f'filelists/hakka_wo_hac/lang_phones.txt','r',encoding='utf-8') as f:
 # with open(f'filelists/hakka_six_segment_4096/lang_phones.txt','r',encoding='utf-8') as f:
@@ -59,8 +59,11 @@ with open(f'filelists/Hakka_xm/lang_phones.txt','r',encoding='utf-8') as f:
 # with open(f'filelists/Hakka_hm/lang_phones.txt','r',encoding='utf-8') as f:
 # with open(f'filelists/tw_1220_kaldi_300_noise/lang_phones.txt','r',encoding='utf-8') as f:
 # with open(f'text/lang_phones.txt','r',encoding='utf-8') as f:
+# 250109 情緒 VITS 訓練用 emotion_phones.txt
+with open(f'dataset/emotion_phones.txt','r',encoding='utf-8') as f:
   phonemes = f.readlines()
-phonemes = [p.strip() for p in phonemes]
+# emotion_phones.txt 格式為 "ID phoneme"，只取第二欄（音素本身）
+phonemes = [p.strip().split()[1] for p in phonemes if p.strip() and len(p.strip().split()) >= 2]
 
 # Export all symbols:
 # symbols = [_pad] + list(_punctuation) + list(_letters) + list(_letters_ipa) + list(_tone) + list(_extra_indo) + list(_special)

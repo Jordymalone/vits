@@ -176,7 +176,19 @@ def save_attn_txt(attn_tensor, save_path):
     attn = attn_tensor[0, 0].cpu().numpy()  # [T_audio, T_text]
     np.savetxt(save_path, attn, fmt="%.4f", delimiter=",")
 
-def synthesis(text, speaker_id, speaker_name, filename, english_flag, langauge):
+def synthesis(text, speaker_id, speaker_name, filename, english_flag, langauge, emotion_id=0):
+    """
+    Synthesize speech from text with emotion control.
+
+    Args:
+        text: Input text
+        speaker_id: Speaker ID
+        speaker_name: Speaker name (for display)
+        filename: Output filename
+        english_flag: Whether text is in English
+        langauge: Language code
+        emotion_id: Emotion ID (0=neutral, 1=happy, 2=sad, 3=angry)
+    """
     processed_text = process_text(text, english_flag)
     result_np_arr = []
     start_time = time.time()
@@ -196,6 +208,7 @@ def synthesis(text, speaker_id, speaker_name, filename, english_flag, langauge):
             x_tst = stn_tst.cuda().unsqueeze(0)
             x_tst_lengths = torch.LongTensor([stn_tst.size(0)]).cuda()
             sid = torch.LongTensor([int(speaker_id)]).cuda()
+            eid = torch.LongTensor([int(emotion_id)]).cuda()  # Emotion ID
             # # audio = net_g.infer(x_tst, x_tst_lengths, sid=sid, noise_scale=0.0, noise_scale_w=0.1, length_scale=1.15)[0][0,0].data.cpu().float().numpy()
             # o, attn, _, _ = net_g.infer(x_tst, x_tst_lengths, sid=sid, noise_scale=0.3, noise_scale_w=0.3, length_scale=1.4)
             # # o, attn, _, _ = net_g.infer(x_tst, x_tst_lengths, sid=sid, noise_scale=0.3, noise_scale_w=0.3, length_scale=1.2)    # 0513 vad test
@@ -205,6 +218,7 @@ def synthesis(text, speaker_id, speaker_name, filename, english_flag, langauge):
                 x_tst,
                 x_tst_lengths,
                 sid=sid,
+                eid=eid,  # Pass emotion ID
                 noise_scale=0.3,
                 noise_scale_w=0.3,
                 length_scale=1.4

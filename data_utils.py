@@ -207,21 +207,37 @@ class TextAudioSpeakerLoader(torch.utils.data.Dataset):
 
         audiopaths_sid_text_new = []
         lengths = []
-        for audiopath, sid, lang, text in self.audiopaths_sid_text:
+        for entry in self.audiopaths_sid_text:
+            # Support backward compatibility: 4 or 5 fields
+            if len(entry) == 4:
+                audiopath, sid, lang, text = entry
+                eid = 0  # Default emotion ID is 0 (neutral)
+            elif len(entry) == 5:
+                audiopath, sid, lang, text, eid = entry
+            else:
+                print(f"Warning: Invalid entry format (expected 4 or 5 fields): {entry}")
+                continue
+
             if self.min_text_len <= len(text) and len(text) <= self.max_text_len:
                 lang_id = lang
-                audiopaths_sid_text_new.append([audiopath, sid, lang_id, text])
+                audiopaths_sid_text_new.append([audiopath, sid, lang_id, text, eid])
                 lengths.append(os.path.getsize(audiopath) // (2 * self.hop_length))
         self.audiopaths_sid_text = audiopaths_sid_text_new
         self.lengths = lengths
 
     def get_audio_text_speaker_pair(self, audiopath_sid_text):
-        # separate filename, speaker_id and text
-        audiopath, sid, lang, text = audiopath_sid_text[0], audiopath_sid_text[1], audiopath_sid_text[2], audiopath_sid_text[3]
+        # separate filename, speaker_id, emotion_id and text
+        audiopath = audiopath_sid_text[0]
+        sid = audiopath_sid_text[1]
+        lang = audiopath_sid_text[2]
+        text = audiopath_sid_text[3]
+        eid = audiopath_sid_text[4]  # Emotion ID
+
         text = self.get_text(text, lang)
         spec, wav = self.get_audio(audiopath)
         sid = self.get_sid(sid)
-        return (text, spec, wav, sid)
+        eid = self.get_eid(eid)  # Convert emotion ID to tensor
+        return (text, spec, wav, sid, eid)
 
     def get_audio(self, filename):
         audio, sampling_rate = load_wav_to_torch(filename)
@@ -262,6 +278,11 @@ class TextAudioSpeakerLoader(torch.utils.data.Dataset):
         sid = torch.LongTensor([int(sid)])
         return sid
 
+    def get_eid(self, eid):
+        """Convert emotion ID to tensor"""
+        eid = torch.LongTensor([int(eid)])
+        return eid
+
     def __getitem__(self, index):
         return self.get_audio_text_speaker_pair(self.audiopaths_sid_text[index])
 
@@ -279,7 +300,7 @@ class TextAudioSpeakerCollate():
         """Collate's training batch from normalized text, audio and speaker identities
         PARAMS
         ------
-        batch: [text_normalized, spec_normalized, wav_normalized, sid]
+        batch: [text_normalized, spec_normalized, wav_normalized, sid, eid]
         """
         # Right zero-pad all one-hot text sequences to max input length
         _, ids_sorted_decreasing = torch.sort(
@@ -294,6 +315,7 @@ class TextAudioSpeakerCollate():
         spec_lengths = torch.LongTensor(len(batch))
         wav_lengths = torch.LongTensor(len(batch))
         sid = torch.LongTensor(len(batch))
+        eid = torch.LongTensor(len(batch))  # Emotion ID tensor
 
         text_padded = torch.LongTensor(len(batch), max_text_len)
         spec_padded = torch.FloatTensor(len(batch), batch[0][1].size(0), max_spec_len)
@@ -317,10 +339,11 @@ class TextAudioSpeakerCollate():
             wav_lengths[i] = wav.size(1)
 
             sid[i] = row[3]
+            eid[i] = row[4]  # Extract emotion ID
 
         if self.return_ids:
-            return text_padded, text_lengths, spec_padded, spec_lengths, wav_padded, wav_lengths, sid, ids_sorted_decreasing
-        return text_padded, text_lengths, spec_padded, spec_lengths, wav_padded, wav_lengths, sid
+            return text_padded, text_lengths, spec_padded, spec_lengths, wav_padded, wav_lengths, sid, eid, ids_sorted_decreasing
+        return text_padded, text_lengths, spec_padded, spec_lengths, wav_padded, wav_lengths, sid, eid
 
 
 class DistributedBucketSampler(torch.utils.data.distributed.DistributedSampler):
