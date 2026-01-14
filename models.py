@@ -483,7 +483,7 @@ class SynthesizerTrn(nn.Module):
       emo_channels = hidden_channels
     else:
       emo_channels = 0
-
+    # 將文字音素 → 聲學特徵的先驗分布 (m_p, logs_p)
     self.enc_p = TextEncoder(n_vocab,
         inter_channels,
         hidden_channels,
@@ -656,68 +656,18 @@ class SynthesizerTrn(nn.Module):
   ):
       """
       Inference with optional emotion conditioning
-
-      Args:
-        x: [B, T_text] text input
-        x_lengths: [B] text lengths
-        sid: [B] speaker IDs (optional)
-        eid: [B] emotion IDs (optional)
-        ref_audio: [B, T_wav] reference audio for eGeMAPS extraction (optional)
-        noise_scale: float
-        length_scale: float
-        noise_scale_w: float
-        max_len: int or None
       """
-      # ======================================================================
-      # 0. 固定 noise 參數（你原來的寫法）
-      # ======================================================================
+      # Fixed noise parameters
       noise_scale = 0.6
       noise_scale_w = 0.2
 
       # ======================================================================
-      # 0.5 Extract eGeMAPS features if reference audio is provided
-      # ======================================================================
-      emo_feat = None
-      emo_mask = None
-      if self.use_egemaps and ref_audio is not None:
-        # Extract eGeMAPS features from reference audio
-        with torch.no_grad():
-          egemaps_feat = self.egemaps_extractor(ref_audio)  # [B, feature_dim, T_feat]
-        # Encode eGeMAPS features
-        emo_feat = self.egemaps_encoder(egemaps_feat)  # [B, hidden_channels, T_feat]
-        # Create mask for emotion features
-        emo_lengths = torch.ones(emo_feat.size(0), dtype=torch.long, device=emo_feat.device) * emo_feat.size(2)
-        emo_mask = torch.unsqueeze(commons.sequence_mask(emo_lengths, emo_feat.size(2)), 1).to(emo_feat.dtype)
-
-      # ======================================================================
-      # 1. Text encoder
-      # ======================================================================
-      x, m_p, logs_p, x_mask = self.enc_p(x, x_lengths, emo_feat=emo_feat, emo_mask=emo_mask)
-      # x:      [B, T_x, H]
-      # m_p:    [B, T_x, H]
-      # logs_p: [B, T_x, H]
-      # x_mask: [B, 1, T_x]
-
-      # ---- DEBUG: 基本形狀與 text 長度 -----------------------------------
-      # text encoder + mask 長度
-      # 確認「encoder 看到的 text 長度」跟 get_text 一致，沒有多吃少吃 token
-      print("[DEBUG] enc_p output:")
-      print("        x.shape      :", x.shape)
-      print("        m_p.shape    :", m_p.shape)
-      print("        logs_p.shape :", logs_p.shape)
-      print("        x_mask.shape :", x_mask.shape)
-      # x_mask 中為 1 的位置數量 = 有效 text token（含 intersperse 的 0）
-      text_lengths_from_mask = x_mask.sum(dim=2)  # [B, 1]
-      print("        text lengths from x_mask:", text_lengths_from_mask.detach().cpu())
-
-      # ======================================================================
-      # 2. Speaker and Emotion embedding
+      # 1. Speaker and Emotion embedding (MUST be computed FIRST!)
       # ======================================================================
       g = None
       if self.n_speakers > 0:
           g = self.emb_g(sid).unsqueeze(-1)  # [B, H, 1]
 
-      # Add emotion embedding if provided
       if self.n_emotions > 0 and eid is not None:
           g_e = self.emb_e(eid).unsqueeze(-1)
           if g is None:
@@ -726,101 +676,57 @@ class SynthesizerTrn(nn.Module):
               g = g + g_e
 
       # ======================================================================
-      # 3. Duration: SDP + DP 混合
+      # 2. Extract eGeMAPS features if reference audio is provided
       # ======================================================================
-      sdp_ratio = 0.1     ## 1205 測試 sdp effect
-      # sdp_ratio = 0.0
-      # logw: [B, 1, T_x]
+      emo_feat = None
+      emo_mask = None
+      if self.use_egemaps and ref_audio is not None:
+          with torch.no_grad():
+              egemaps_feat = self.egemaps_extractor(ref_audio)
+          emo_feat = self.egemaps_encoder(egemaps_feat)
+          emo_lengths = torch.ones(emo_feat.size(0), dtype=torch.long, device=emo_feat.device) * emo_feat.size(2)
+          emo_mask = torch.unsqueeze(commons.sequence_mask(emo_lengths, emo_feat.size(2)), 1).to(emo_feat.dtype)
+
+      # ======================================================================
+      # 3. Text encoder (now receives g!)
+      # ======================================================================
+      x, m_p, logs_p, x_mask = self.enc_p(x, x_lengths, g=g, emo_feat=emo_feat, emo_mask=emo_mask)
+
+      # ======================================================================
+      # 4. Duration prediction: SDP + DP mix
+      # ======================================================================
+      sdp_ratio = 0.1
       logw_sdp = self.sdp(x, x_mask, g=g, reverse=True, noise_scale=noise_scale_w)
-      logw_dp  = self.dp(x, x_mask, g=g)
+      logw_dp = self.dp(x, x_mask, g=g)
       logw = logw_sdp * sdp_ratio + logw_dp * (1 - sdp_ratio)
 
-      # ---- DEBUG: logw 結果 ------------------------------------------------
-      # log-duration（還沒 exp 前）
-      print("[DEBUG] logw (from SDP + DP):")
-      print("        logw.shape   :", logw.shape)
-      # 只印第一個 sample，避免太肥
-      logw_0 = logw[0, 0].detach().cpu()
-      print("        logw[0, 0, :]:", logw_0)
-
-      # w: 連續 duration（frame 數，尚未取整），shape = [B, 1, T_x]
       w = torch.exp(logw) * x_mask * length_scale
       w_ceil = torch.ceil(w)
 
-      # ---- DEBUG: w / w_ceil 結果 -----------------------------------------
-      # 真正的 duration (frame)
-      print("[DEBUG] duration (w, w_ceil):")
-      print("        w.shape      :", w.shape)
-      print("        w_ceil.shape :", w_ceil.shape)
-
-      w_0 = w[0, 0].detach().cpu()
-      w_ceil_0 = w_ceil[0, 0].detach().cpu()
-      print("        w[0, 0, :]:      ", w_0)
-      print("        w_ceil[0, 0, :]: ", w_ceil_0)
-      print("        sum w_ceil[0]:   ", w_ceil_0.sum())
-
-      # 保留原本的 print（方便對比你之前的 log）
-      print(f"orig_w_ceil: {w_ceil}")
-      # 如果之後要玩 stretch，就在這行下面動手
-      # w_ceil = self.stretch_phoneme_by_index_only(w_ceil, [0,1], scale=3, include_edge_blank=True)
-      print(f"tune_w_ceil_frame: {w_ceil}")
-
       # ======================================================================
-      # 4. 根據 duration 計算 output 長度與 mask
+      # 5. Compute output length and masks
       # ======================================================================
-      # y_lengths: 每個 sample 的總 frame 數 [B]
       y_lengths = torch.clamp_min(torch.sum(w_ceil, [1, 2]), 1).long()
-      y_mask = torch.unsqueeze(
-          commons.sequence_mask(y_lengths, None), 1
-      ).to(x_mask.dtype)  # [B, 1, T_y]
+      y_mask = torch.unsqueeze(commons.sequence_mask(y_lengths, None), 1).to(x_mask.dtype)
       attn_mask = torch.unsqueeze(x_mask, 2) * torch.unsqueeze(y_mask, -1)
-      # attn_mask: [B, 1, T_y, T_x]
-
-      # ---- DEBUG: y_lengths / mask ----------------------------------------
-      print("[DEBUG] y_lengths / y_mask:")
-      print("        y_lengths:", y_lengths.detach().cpu())
-      print("        y_mask.shape  :", y_mask.shape)
-      print("        attn_mask.shape:", attn_mask.shape)
 
       # ======================================================================
-      # 5. 根據 w_ceil 產生 monotonic alignment path
+      # 6. Generate alignment path
       # ======================================================================
-      attn = commons.generate_path(w_ceil, attn_mask)  # [B, 1, T_y, T_x]
-
-      # ---- DEBUG: attn 形狀與基本檢查 -------------------------------------
-      print("[DEBUG] attn:")
-      print("        attn.shape:", attn.shape)
-      # 檢查每個 frame 的 sum 是否 ~1（在 mask 範圍內）
-      attn_0 = attn[0, 0].detach().cpu()  # [T_y, T_x]
-      row_sums = attn_0.sum(dim=1)        # [T_y]
-      col_sums = attn_0.sum(dim=0)        # [T_x]
-      print("        attn[0,0] row_sums (first 10):", row_sums[:10])
-      print("        attn[0,0] col_sums:", col_sums)
+      attn = commons.generate_path(w_ceil, attn_mask)
 
       # ======================================================================
-      # 6. 將 m_p / logs_p 對齊到 time 軸
+      # 7. Align m_p / logs_p to time axis
       # ======================================================================
-      # attn.squeeze(1): [B, T_y, T_x]
-      # m_p: [B, T_x, H] -> transpose(1,2) -> [B, H, T_x]
-      # matmul -> [B, T_y, H] -> transpose -> [B, H, T_y]
       m_p = torch.matmul(attn.squeeze(1), m_p.transpose(1, 2)).transpose(1, 2)
       logs_p = torch.matmul(attn.squeeze(1), logs_p.transpose(1, 2)).transpose(1, 2)
 
-      # ---- DEBUG: 對齊後的 m_p / logs_p -----------------------------------
-      print("[DEBUG] aligned m_p / logs_p:")
-      print("        m_p.shape   :", m_p.shape)
-      print("        logs_p.shape:", logs_p.shape)
-
       # ======================================================================
-      # 7. 取樣 z_p -> flow -> decoder
+      # 8. Sample z_p -> flow -> decoder
       # ======================================================================
       z_p = m_p + torch.randn_like(m_p) * torch.exp(logs_p) * noise_scale
       z = self.flow(z_p, y_mask, g=g, reverse=True)
       o = self.dec((z * y_mask)[:, :, :max_len], g=g)
-
-      # ---- DEBUG: 輸出形狀 ------------------------------------------------
-      print("[DEBUG] decoder output:")
-      print("        o.shape:", o.shape)
 
       return o, attn, y_mask, (z, z_p, m_p, logs_p)
   # def infer(self, x, x_lengths, sid=None, noise_scale=1, length_scale=1, noise_scale_w=1., max_len=None):
