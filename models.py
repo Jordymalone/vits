@@ -581,17 +581,7 @@ class SynthesizerTrn(nn.Module):
       # logs_p: [B, T_x, H]
       # x_mask: [B, 1, T_x]
 
-      # ---- DEBUG: 基本形狀與 text 長度 -----------------------------------
-      # text encoder + mask 長度
-      # 確認「encoder 看到的 text 長度」跟 get_text 一致，沒有多吃少吃 token
-      print("[DEBUG] enc_p output:")
-      print("        x.shape      :", x.shape)
-      print("        m_p.shape    :", m_p.shape)
-      print("        logs_p.shape :", logs_p.shape)
-      print("        x_mask.shape :", x_mask.shape)
-      # x_mask 中為 1 的位置數量 = 有效 text token（含 intersperse 的 0）
-      text_lengths_from_mask = x_mask.sum(dim=2)  # [B, 1]
-      print("        text lengths from x_mask:", text_lengths_from_mask.detach().cpu())
+
 
       # ======================================================================
       # 2. Speaker embedding
@@ -627,35 +617,11 @@ class SynthesizerTrn(nn.Module):
           print(f"{'='*58}")
       # ================= 👆 插入結束 👆 =================
 
-      # ---- DEBUG: logw 結果 ------------------------------------------------
-      # log-duration（還沒 exp 前）
-      # print("[DEBUG] logw (from SDP + DP):")
-      # print("        logw.shape   :", logw.shape)
-      # 只印第一個 sample，避免太肥
-      logw_0 = logw[0, 0].detach().cpu()
-      # print("        logw[0, 0, :]:", logw_0)
-
       # w: 連續 duration（frame 數，尚未取整），shape = [B, 1, T_x]
       w = torch.exp(logw) * x_mask * length_scale
       w_ceil = torch.ceil(w)
-
-      # ---- DEBUG: w / w_ceil 結果 -----------------------------------------
-      # 真正的 duration (frame)
-      print("[DEBUG] duration (w, w_ceil):")
-      print("        w.shape      :", w.shape)
-      print("        w_ceil.shape :", w_ceil.shape)
-
-      w_0 = w[0, 0].detach().cpu()
-      w_ceil_0 = w_ceil[0, 0].detach().cpu()
-      print("        w[0, 0, :]:      ", w_0)
-      print("        w_ceil[0, 0, :]: ", w_ceil_0)
-      print("        sum w_ceil[0]:   ", w_ceil_0.sum())
-
-      # 保留原本的 print（方便對比你之前的 log）
-      print(f"orig_w_ceil: {w_ceil}")
       # 如果之後要玩 stretch，就在這行下面動手
       # w_ceil = self.stretch_phoneme_by_index_only(w_ceil, [0,1], scale=3, include_edge_blank=True)
-      print(f"tune_w_ceil_frame: {w_ceil}")
 
       # ======================================================================
       # 4. 根據 duration 計算 output 長度與 mask
@@ -668,26 +634,14 @@ class SynthesizerTrn(nn.Module):
       attn_mask = torch.unsqueeze(x_mask, 2) * torch.unsqueeze(y_mask, -1)
       # attn_mask: [B, 1, T_y, T_x]
 
-      # ---- DEBUG: y_lengths / mask ----------------------------------------
-      print("[DEBUG] y_lengths / y_mask:")
-      print("        y_lengths:", y_lengths.detach().cpu())
-      print("        y_mask.shape  :", y_mask.shape)
-      print("        attn_mask.shape:", attn_mask.shape)
+
 
       # ======================================================================
       # 5. 根據 w_ceil 產生 monotonic alignment path
       # ======================================================================
       attn = commons.generate_path(w_ceil, attn_mask)  # [B, 1, T_y, T_x]
 
-      # ---- DEBUG: attn 形狀與基本檢查 -------------------------------------
-      print("[DEBUG] attn:")
-      print("        attn.shape:", attn.shape)
-      # 檢查每個 frame 的 sum 是否 ~1（在 mask 範圍內）
-      attn_0 = attn[0, 0].detach().cpu()  # [T_y, T_x]
-      row_sums = attn_0.sum(dim=1)        # [T_y]
-      col_sums = attn_0.sum(dim=0)        # [T_x]
-      print("        attn[0,0] row_sums (first 10):", row_sums[:10])
-      print("        attn[0,0] col_sums:", col_sums)
+
 
       # ======================================================================
       # 6. 將 m_p / logs_p 對齊到 time 軸
@@ -698,10 +652,7 @@ class SynthesizerTrn(nn.Module):
       m_p = torch.matmul(attn.squeeze(1), m_p.transpose(1, 2)).transpose(1, 2)
       logs_p = torch.matmul(attn.squeeze(1), logs_p.transpose(1, 2)).transpose(1, 2)
 
-      # ---- DEBUG: 對齊後的 m_p / logs_p -----------------------------------
-      print("[DEBUG] aligned m_p / logs_p:")
-      print("        m_p.shape   :", m_p.shape)
-      print("        logs_p.shape:", logs_p.shape)
+
 
       # ======================================================================
       # 7. 取樣 z_p -> flow -> decoder
@@ -710,9 +661,7 @@ class SynthesizerTrn(nn.Module):
       z = self.flow(z_p, y_mask, g=g, reverse=True)
       o = self.dec((z * y_mask)[:, :, :max_len], g=g)
 
-      # ---- DEBUG: 輸出形狀 ------------------------------------------------
-      print("[DEBUG] decoder output:")
-      print("        o.shape:", o.shape)
+
 
       return o, attn, y_mask, (z, z_p, m_p, logs_p)
   # def infer(self, x, x_lengths, sid=None, noise_scale=1, length_scale=1, noise_scale_w=1., max_len=None):
