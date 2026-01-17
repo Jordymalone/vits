@@ -1,0 +1,161 @@
+# VITS Inference Configuration
+# =============================================================================
+# 使用方式:
+#   python infer.py --model hakka_hf --text "..." --sid 0
+#   python infer.py --list-models
+# =============================================================================
+
+default_model: hakka_hf
+
+models:
+  # ============================================================================
+  # 客家語 (Hakka)
+  # ============================================================================
+  hakka_hf:
+    name: "海陸腔客家語 (Hailu Female)"
+    config: "logs/hakka_hf_model/config.json"
+    checkpoint: "logs/hakka_hf_model/G_519000.pth"
+    speaker_file: "filelists/Hakka_hf/mixed_5_id.txt"
+    lang_phones: "filelists/Hakka_hf/lang_phones.txt"
+    default_language: "HAK"
+
+  hakka_hm:
+    name: "海陸腔客家語 (Hailu Male)"
+    config: "logs/hakka_hm_model/config.json"
+    checkpoint: "logs/hakka_hm_model/G_253000.pth"
+    speaker_file: "filelists/Hakka_hm/mixed_5_id.txt"
+    lang_phones: "filelists/Hakka_hm/lang_phones.txt"
+    default_language: "HAK"
+
+  hakka_xf:
+    name: "四縣腔客家語 (Sixian Female)"
+    config: "logs/Hakka_single_xf/config.json"
+    checkpoint: "logs/Hakka_single_xf/G_159000.pth"
+    speaker_file: "filelists/Hakka_xf/mixed_5_id.txt"
+    lang_phones: "filelists/Hakka_xf/lang_phones.txt"
+    default_language: "HAK"
+
+  hakka_xm:
+    name: "四縣腔客家語 (Sixian Male)"
+    config: "logs/Hakka_single_xm/config.json"
+    checkpoint: "logs/Hakka_single_xm/G_306000.pth"
+    speaker_file: "filelists/Hakka_xm/mixed_5_id.txt"
+    lang_phones: "filelists/Hakka_xm/lang_phones.txt"
+    default_language: "HAK"
+
+  hakka_six_v1:
+    name: "客家語 六堆 v1"
+    config: "logs/hakka_six_v1/config.json"
+    checkpoint: "logs/hakka_six_v1/G_50000.pth"
+    speaker_file: "filelists/hakka_six_v1/mixed_5_id.txt"
+    lang_phones: "filelists/hakka_six_v1/lang_phones.txt"
+    default_language: "HAK"
+
+  hakka_wo_hac:
+    name: "客家語 (無 HAC)"
+    config: "logs/hakka_wo_hac/config.json"
+    checkpoint: "logs/hakka_wo_hac/G_591000.pth"
+    speaker_file: "filelists/hakka_wo_hac/mixed_5_id.txt"
+    lang_phones: "filelists/hakka_wo_hac/lang_phones.txt"
+    default_language: "HAK"
+
+  # ============================================================================
+  # 台語 (Taiwanese)
+  # ============================================================================
+  tw_new_2:
+    name: "台語 新版 v2"
+    config: "logs/tw_new_2/config.json"
+    checkpoint: "logs/tw_new_2/G_568000.pth"
+    speaker_file: "filelists/backup/mixed_5_id.txt"
+    lang_phones: "filelists/tw_test/lang_phones.txt"
+    default_language: "TW"
+
+  retraintw:
+    name: "台語 Retrain"
+    config: "logs/retraintw/config.json"
+    checkpoint: "logs/retraintw/G_697000.pth"
+    speaker_file: "filelists/retraintw/mixed_5_id.txt"
+    lang_phones: "filelists/retraintw/lang_phones.txt"
+    default_language: "TW"
+
+  tw_1220_kaldi_300_noise:
+    name: "台語 Kaldi 300 Noise"
+    config: "logs/tw_1220_kaldi_300_noise/config.json"
+    checkpoint: "logs/tw_1220_kaldi_300_noise/G_287000.pth"
+    speaker_file: "filelists/tw_1220_kaldi_300_noise/mixed_5_id.txt"
+    lang_phones: "filelists/tw_1220_kaldi_300_noise/lang_phones.txt"
+    default_language: "TW"
+
+  tw_1115_doublevVowel:
+    name: "台語 雙母音"
+    config: "logs/tw_1115_doublevVowel/config.json"
+    checkpoint: "logs/tw_1115_doublevVowel/G_290000.pth"
+    speaker_file: "filelists/tw_1115_doublevVowel/mixed_5_id.txt"
+    lang_phones: "filelists/tw_1115_doublevVowel/lang_phones.txt"
+    default_language: "TW"
+
+  # ============================================================================
+  # 國語 / 中文 (Mandarin)
+  # ============================================================================
+  phonetic_test_zh:
+    name: "國語 注音測試"
+    config: "logs/phonetic_test_zh/config.json"
+    checkpoint: "logs/phonetic_test_zh/G_95000.pth"
+    speaker_file: "filelists/phonetic_test_zh/mixed_5_id.txt"
+    lang_phones: "filelists/phonetic_test_zh/lang_phones.txt"
+    default_language: "ZH"
+
+  # ============================================================================
+  # 多語言 / 混合 (Multilingual)
+  # ============================================================================
+  mixed_3646_vad:
+    name: "混合模型 3646 VAD"
+    config: "logs/3646_vad_25_920/config.json"
+    checkpoint: "logs/3646_vad_25_920/G_480000.pth"
+    speaker_file: "filelists/3646_vad_25_920/mixed_5_id.txt"
+    lang_phones: "filelists/3646_vad_25_920/lang_phones.txt"
+    supported_languages: ["ZH", "TW", "HAK", "EN"]  # ← 此模型支援的所有語言
+    default_language: "TW"                          # ← 預設使用的語言
+
+  mixed_3834_vad:
+    name: "混合模型 3834 VAD"
+    config: "logs/3834_5_vad/config.json"
+    checkpoint: "logs/3834_5_vad/G_350000.pth"
+    speaker_file: "filelists/3834_5_retrainpaintako_vad/mixed_5_id.txt"
+    lang_phones: "filelists/3834_5_retrainpaintako_vad/lang_phones.txt"
+    supported_languages: ["ZH", "TW", "HAK", "EN"]
+    default_language: "TW"
+
+  # ============================================================================
+  # 英語 (English)
+  # ============================================================================
+  en_0111:
+    name: "英語模型 0111"
+    config: "logs/en_0111/config.json"
+    checkpoint: "logs/en_0111/G_609000.pth"
+    speaker_file: "filelists/en_0111/mixed_5_id.txt"
+    lang_phones: "filelists/en_0111/lang_phones.txt"
+    default_language: "EN"
+
+  # ============================================================================
+  # 越南語 (Vietnamese)
+  # ============================================================================
+  vietnamese:
+    name: "越南語"
+    config: "logs/vietnamese_0816/config.json"
+    checkpoint: "logs/vietnamese_0816/G_900000.pth"
+    speaker_file: "filelists/vietnamese_0816/mixed_5_id.txt"
+    lang_phones: "filelists/vietnamese_0816/lang_phones.txt"
+    default_language: "VI"
+
+# ============================================================================
+# 語言代碼對照
+# ============================================================================
+# ZH   - 中文/國語
+# TZH  - 中文(CTL)
+# HAK  - 客家語
+# TW   - 台語
+# EN   - 英語
+# ID   - 印尼語
+# JP   - 日語
+# VI   - 越南語
